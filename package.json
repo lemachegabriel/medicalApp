@@ -1,0 +1,28 @@
+{
+  "name": "medicalApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemachegabriel/medicalApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lemachegabriel/medicalApp/issues"
+  },
+  "homepage": "https://github.com/lemachegabriel/medicalApp#readme",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-select": "^5.0.0"
+  }
+}
