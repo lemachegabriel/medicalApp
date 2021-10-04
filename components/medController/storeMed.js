@@ -1,5 +1,5 @@
 import React from "react"
-import { storeMed } from "../lib/api/storeMed"
+import { storeMed } from "../../lib/api/storeMed"
 
 const initialState = {
     name: "",
@@ -12,6 +12,7 @@ const initialState = {
   };
 class AddMed extends React.Component {
     state = initialState
+    
 
     handleChange = event =>{
         this.setState({ [event.target.name]: event.target.value })
@@ -71,7 +72,7 @@ class AddMed extends React.Component {
                 <div>
                     <table className="table">
                         <tr>
-                            <input name="medico" type="checkbox" onChange={this.handleCheckChange}/>
+                            <input name="medico" type="checkbox" defaultChecked={false} onChange={this.handleCheckChange}/>
                             <th>medico</th>
                         </tr>
                         <tr>

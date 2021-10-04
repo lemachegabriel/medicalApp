@@ -1,14 +1,17 @@
 import LoginForm from '../components/loginForm'
-
 import { useRouter } from 'next/router'
-
+import style from './styles/home.module.css'
 export default function index(){
-    const router = useRouter()
+    return(
+            <div className={style.master_page}>
+                <div className={style.menu_bar}>
+                    <a>Logo</a>
+                    <button >registre</button>
+                    <button>login</button>
+                </div>
+                <div className={style.home_section}>
 
-    const redirect_register = () => {
-        router.push('/register')
-    }
-    return(    
-        <LoginForm></LoginForm>
+                </div>
+            </div>
     )
 }

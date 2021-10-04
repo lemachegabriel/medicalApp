@@ -4,7 +4,7 @@
   }
   
   .search input {
-    background-color: white;
+    background-color: rgb(114, 68, 68);
     border: 0;
     border-radius: 2px;
     border-top-right-radius: 0px;
@@ -22,8 +22,6 @@
     display: grid;
     place-items: center;
   }
-  
-  
   
   .dataResult {
     margin-top: 5px;
@@ -50,7 +48,6 @@
   .dataItem p {
     margin-left: 10px;
   }
-  
   
   #clearBtn {
     cursor: pointer;

@@ -1,6 +1,6 @@
 import { createPro, delPro, addMed, indexPro } from "../lib/api/problems";
 import React, {useState} from "react";
-import AddMed from "./storeMed";
+import AddMed from "./medController/storeMed";
 
 function Problems(){
   const [options, setOptions] = useState("")
