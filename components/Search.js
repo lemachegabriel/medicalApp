@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import Link from 'next/link'
 import { queryPro } from "../lib/api/problems";
 import styles from "./styles/search.module.css"
-import Select from "react-select";
 
 function SearchBar({ placeholder}) {  
   const [wordEntered, setWordEntered] = useState("");

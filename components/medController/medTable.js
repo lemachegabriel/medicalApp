@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import Link from 'next/link'
 import { queryMed, delMed } from "../../lib/api/storeMed";
-import styles from "../styles/search.module.css"
+import styles from "./styles/medTable.module.css"
+import EditMed from "./editMed";
 
 function MedTable({ placeholder}) {  
   const [wordEntered, setWordEntered] = useState("");
   const [name, setName] = useState([]);
-  let nameData = [{
-      name: "",
-      _id: ""
-  }]
-  
+  const [edit, setEdit] = useState(false)
+  const [editData, setEditData] = useState({})
+  let arrData = [{}]
+
   const deleteMed =  async (e) => { 
     const id = e.target.id
     await delMed(id)
@@ -20,19 +20,22 @@ function MedTable({ placeholder}) {
     const filterWord = wordEntered.toLocaleLowerCase()
     const datas = await queryMed(filterWord)
     for(let i=0; i<datas.length; i++){
-      nameData.push({name: datas[i]['name'], id: datas[i]["_id"]})
+      let correctDate = ""
+      for(let j=0; j<10; j++){
+        correctDate += datas[i]["date"][j]
+      }
+      datas[i]["date"] = correctDate
+      arrData.push(datas[i])
     }
-    setName(nameData)
-    console.log(name)
+    setName(arrData)
   }
-
   const clearInput = () => {
     setWordEntered("");
   };
 
   return (
-    <div className={styles.search}>
-      
+    <div>
+      {edit && <EditMed setedit={setEdit} data={editData}></EditMed>}
       <div className="searchInputs">
         <input
           type="text"
@@ -44,36 +47,42 @@ function MedTable({ placeholder}) {
         <button className="button green" onClick={dataTicker}>buscar</button>
       </div>
       {name.length != 0 ? (
-        <div className={styles.dataResult}>
-            <table>
-                <tr id="header">
+        <div className="table">
+          
+            <table className={styles.table}>
+              <thead>
+                <tr className={styles.header}>
                     <th>Ativo</th>
                     <th>Editar</th>
+                    <th>Criado</th>
                     <th>deletar</th>
                 </tr>
-                {name.slice(1, 5).map((value, key) => {
+              </thead>
+                {name.slice(1, 15).map((value, key) => {
                     return (
+                      <tbody>
                         <tr>
-                            <th>{value["name"]}</th>
-                            <th>
-                            <Link className={styles.dataItem} href={`/admin/edit/${value["id"]}`} target="_blank" key={value}>
+                            <td>{value["name"]}</td>
+                            <td>
+                            <a className={styles.dataItem} onClick={() => {setEdit(true), setEditData(value)}} key={value}>
                                 editar
-                            </Link>
-                            </th>
-                            <th>
-                            <a className={styles.dataItem} id={value["id"]} onClick={deleteMed}>
+                            </a>
+                            </td>
+                            <td>{value["date"]}</td>
+                            <td>
+                            <a className={styles.dataItem} id={value["_id"]} onClick={deleteMed}>
                                 deletar
                             </a> 
-                            </th>                               
+                            </td>                               
                         </tr>
+                      </tbody>
                     );
                     })}
             </table>
+            
         </div>
       ):(
-        <div>
-          
-        </div>
+        <div></div>
       )}
     </div>
   );

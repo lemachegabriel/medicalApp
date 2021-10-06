@@ -1,6 +1,7 @@
-import { createPro, delPro, addMed, indexPro } from "../lib/api/problems";
 import React, {useState} from "react";
 import AddMed from "./medController/storeMed";
+import MedTable from "../components/medController/medTable"
+
 
 function Problems(){
   const [options, setOptions] = useState("")
@@ -16,11 +17,12 @@ function Problems(){
   return (
     <div>
       <button className="addMed" onClick={handleClick}> Adicionar novo ativo</button>
+      <button id></button>
       <button onClick={clear}></button>
       {options == "addMed" ? (
         <AddMed></AddMed>
       ) : (
-        <div> adada </div>
+        <MedTable></MedTable>
       )}
     </div>
   )
