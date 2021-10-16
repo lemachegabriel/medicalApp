@@ -1,13 +1,8 @@
-import Problems from "../../components/problems"
+import Controllers from "../../components/adminArea"
 import styles from '../styles/style.module.css'
 
 export default function home(){
-    return(
-        <h1>
-            <div>
-                <Problems></Problems>
-                
-            </div>
-        </h1>
+    return(  
+        <Controllers></Controllers>            
     )
 }

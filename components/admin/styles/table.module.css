@@ -1,0 +1,11 @@
+.headerRow {
+    background-color:  #16a085;
+    height: 76px;
+    align-items: center;
+
+}
+.searchInput {
+    margin-left: 5px;
+    margin-right: 3px;
+    width: 200px;
+}
