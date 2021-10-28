@@ -3,8 +3,10 @@ import { loginUser, redirect } from '../lib/api/auth';
 import { MdEmail, MdLock } from "react-icons/md"
 import { HiEye, HiEyeOff } from "react-icons/hi"
 import styles from "./styles/login.module.css"
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, InputGroup, FormControl, Form, Modal } from "react-bootstrap";
 
-function Login() {
+function Login({setLog, log}) {
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
    const [show, setShow] = useState(false)
@@ -42,47 +44,50 @@ function Login() {
     }
 
    return (
-      <div className={styles.login}>
-         <div className={styles.login_right}>
-            <h1>Acessar App</h1>
-            <div style={{ fontSize: 12, color: "red" }}>{error}</div>
-                        
-            <div className={styles.login_loginInputEmail}>
-               <MdEmail />
-               <input
-                  type="email"
-                  placeholder="Digite um email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-               />
-            </div>
-
-            <div className={styles.login_loginInputPassword}>
-               <MdLock />
-               <input
-                  placeholder="Digite sua senha"
-                  type={show ? "text" : "password"}
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-               />
-               <div className={styles.login_eye}>
-                  {show ? (
-                     <HiEye size={20} onClick={handleClick}
+      <Modal show={log} onHide={()=> setLog(false)} size="lg">
+         <Modal.Header>
+            <Modal.Title id="contained-modal-title-vcenter">
+               Login
+            </Modal.Title>
+         </Modal.Header>
+         <Modal.Body>
+            <Row>
+               <Col>
+                  <div className={styles.login_loginInputEmail}>
+                     <MdEmail />
+                     <input
+                        type="email"
+                        placeholder="Digite um email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
                      />
-                  ) : (
-                        <HiEyeOff size={20} onClick={handleClick}/>
-                     )}
-               </div>
-            </div>
-            <button onClick={Login}>
-               Entrar
-            </button>
-            <h4>Não tenho conta!</h4>
-            <button onClick={redirect_register}>
-               Cadastrar
-            </button>
-         </div>
-      </div>
+                  </div>
+               </Col>
+            </Row>
+            <Row>
+               <Col xs lg="2">
+                  <div className={styles.login_loginInputPassword}>
+                     <MdLock />
+                     <input
+                        placeholder="Digite sua senha"
+                        type={show ? "text" : "password"}
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                     />
+                     <div className={styles.login_eye}>
+                        {show ? (
+                           <HiEye size={20} onClick={handleClick}
+                           />
+                        ) : (
+                              <HiEyeOff size={20} onClick={handleClick}/>
+                           )}
+                     </div>
+                  </div>
+               </Col>
+            </Row>
+         </Modal.Body>
+      </Modal> 
+      
    )
 }
 export default Login

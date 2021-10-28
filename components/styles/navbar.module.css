@@ -1,114 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;1,600&family=Sarala:wght@700&display=swap');
 
-.navbar {
-  background: linear-gradient(90deg, rgb(72, 151, 132) 0%, rgb(72, 151, 132) 100%);
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3rem;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  margin-top: -10px;
-  margin-left: -10px;
-  margin-right: -8px;
-  
-}
 
-.navbar_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80px;
-  max-width: 1500px;
-}
-
-.navbar_logo {
-  max-width:200px;
-  max-height:1500px;
-  width: auto;
-  height: auto;
-  
-}
-
-.nav_menu {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 10px;
-  list-style: none;
-  text-align: center;
-  width: 60vw;
-  justify-content: end;
-  margin-right: 2rem;
-}
-
-.nav_menu li {
-  height: 80px;
+.logo{
+  position: absolute;
+  top: 3%;
+  left: 6%;
   cursor: pointer;
-}
-.nav_menu :hover{
-  color:rgb(27, 84, 69);
-}
+  margin-right: 10px;
 
-.nav_links {
-  color: #fff;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  height: 100%;
+  
 }
-
-.nav_links:hover {
-  border-bottom: 4px solid #fff;
-  transition: all 0.2s ease-out;
-}
-
-.menu_icon {
-  display: none;
-}
-@media screen and (max-width: 960px) {
-  .nav_menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 90vh;
+.loginBut{
     position: absolute;
-    top: 80px;
-    left: -100%;
-    opacity: 1;
-    transition:  0.5s ease;
-  }
-
-  .nav_menu_active {
-    background: #000000;
-    width: 400px;
-    height: 400px;
-    margin-top: 600px;
-    transition:  0.5s ease;
-  }
-
-  .nav_links {
-    text-align: center;
-    padding: 2rem;
-    width: 100%;
-    display: table;
-  }
-  .navBar_logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(25%, 50%);
-  }
-
-  .menu_icon {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    top: 25px;
+    right: 8%;
     cursor: pointer;
-  }
-
+    padding: 11px 35px;
+    background: linear-gradient(90deg,#8dc63d 0%,#8dc63e 29.54%,#8dc63f 75.59%,#8dc63d 100.02%);
+    border-radius: 50px;
+    border: none;
+    color: #fff;
+    box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0; 
+    text-decoration: none;
+    font-family: 'Quicksand',sans-serif;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 550;
+    transition-duration: 100ms;
+}
+.loginBut:hover{
+  color: #fff;
+  text-decoration: none;
+  transform: scale(1.05);
+  box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0;
+  cursor: pointer;
+  border: none;
 }

@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {createPro, addMedPro, update} from '../../lib/api/problems'
+import {createPro, addMedPro, update, delMedPro} from '../../lib/api/problems'
 import { Button, Row, Modal, Col, InputGroup, FormControl } from "react-bootstrap";
 import Select from "react-select";
 import styles from "./styles/editMed.module.css"
@@ -25,32 +25,20 @@ function EditPro({ setedit, edit, data, meddata, selectedP}) {
     }
     const handleSelectChange = (e) => {
         setSelMed(e)
-        /*
-        for(let i=0; i<selMed.length; i++){
-            for(let j=0; j<selMed2.length; j++){
-                if(selMed[i]['value'] == selMed2[j]['value']) selMed.splice(i, 1), selMed2.splice(j, 1)
-            }
-            
-            //await addMedPro(selMed[i]['label'], selMed[i]['value'], data['_id'])
-        }
-        */
-        console.log( - selMed)
-        
     }
-    
     const updatePro = async () => {
-        const res = await update(data['_id'], newData)
+        await update(data['_id'], newData)
         
-        // if(res) {
-        //     for(let i=0; i<selMed.length; i++){
-        //         for(let j=0; j<selMed2.length; j++){
-        //             if(selMed[i] == selMed2[j]) selMed.splice(i, 1), selMed2.splice(j, 1)
-        //         }
-                
-        //         //await addMedPro(selMed[i]['label'], selMed[i]['value'], data['_id'])
-        //     }
-        // }
-        setadd(false)
+
+        if(selMed.length == 0){
+            await delMedPro (data['_id']) 
+        }else if(selectedP.length == 0){
+            for(let i=0; i<selMed.length; i++) await addMedPro(selMed[i]['label'], selMed[i]['value'], data['_id'])
+        }else{
+            await delMedPro(data['_id'])
+            for(let i=0; i<selMed.length; i++) await addMedPro(selMed[i]['label'], selMed[i]['value'], data['_id'])
+        }
+        setedit(false)
     }
     
     return(
