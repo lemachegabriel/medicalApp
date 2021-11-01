@@ -30,7 +30,8 @@ function Login({setLog, log}) {
      return true
    }
 
-   const Login = async () => {
+   const login = async () => {
+      console.log(error)
       if(validate()){
          const data = await loginUser(email, password)
          if(data){
@@ -44,47 +45,46 @@ function Login({setLog, log}) {
     }
 
    return (
-      <Modal show={log} onHide={()=> setLog(false)} size="lg">
+      <Modal show={log} onHide={()=> setLog(false)} dialogClassName={styles.modal} size='sm'>
          <Modal.Header>
-            <Modal.Title id="contained-modal-title-vcenter">
-               Login
-            </Modal.Title>
+            <h1 className={styles.title}>Login</h1>
          </Modal.Header>
          <Modal.Body>
-            <Row>
-               <Col>
-                  <div className={styles.login_loginInputEmail}>
-                     <MdEmail />
-                     <input
-                        type="email"
-                        placeholder="Digite um email"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                     />
+            <div className={styles.login_right}>
+               <div style={{ fontSize: 12, color: "red" }}>{error}</div>
+               <div className={styles.login_loginInputEmail}>
+                  <MdEmail />
+                  <input
+                     type="email"
+                     placeholder="Digite seu email"
+                     value={email}
+                     onChange={e => setEmail(e.target.value)}
+                  />
+               </div>
+         
+               <div className={styles.login_loginInputPassword}>
+                  <MdLock />
+                  <input
+                     placeholder="Digite sua senha"
+                     type={show ? "text" : "password"}
+                     value={password}
+                     onChange={e => setPassword(e.target.value)}
+                  />
+                  <div className={styles.login_eye}>
+                     {show ? (
+                        <HiEye size={20} onClick={handleClick}
+                        />
+                     ) : (
+                           <HiEyeOff size={20} onClick={handleClick}/>
+                        )}
                   </div>
-               </Col>
-            </Row>
-            <Row>
-               <Col xs lg="2">
-                  <div className={styles.login_loginInputPassword}>
-                     <MdLock />
-                     <input
-                        placeholder="Digite sua senha"
-                        type={show ? "text" : "password"}
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                     />
-                     <div className={styles.login_eye}>
-                        {show ? (
-                           <HiEye size={20} onClick={handleClick}
-                           />
-                        ) : (
-                              <HiEyeOff size={20} onClick={handleClick}/>
-                           )}
-                     </div>
-                  </div>
-               </Col>
-            </Row>
+               </div>
+               <div onClick={login} className={styles.login_loginBut}>
+                  <a >Entrar</a>
+               </div> 
+               <a className={styles.create} onClick={redirect_register}>Criar nova conta </a>
+               
+            </div>
          </Modal.Body>
       </Modal> 
       

@@ -1,11 +1,15 @@
 import styles from './styles/home.module.css'
 import Menu from '../components/navBar'
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Nav, Navbar, Row, Col, Image, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import Register from '../components/RegisterForms';
+import React, { useState, useEffect } from 'react';
 
 export default function index(){
+    const [register, setRegister] = useState(false);
     return(
         <>
+            {register && <Register setReg={setRegister} reg={register}></Register>}
             <Menu></Menu>
             <img className={styles.back_img} src='/img/background.svg/'></img>
             <Row>
@@ -20,7 +24,7 @@ export default function index(){
                     </Row>
                     <Row>
                         <Col>
-                            <a className={styles.regBut}>Registre-se</a>
+                            <a onClick={()=> {setRegister(true)}} className={styles.regBut}>Registre-se</a>
                         </Col>
                     </Row>
                 </Col>

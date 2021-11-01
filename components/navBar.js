@@ -5,16 +5,11 @@ import styles from "./styles/navbar.module.css"
 import Login from './loginForm';
 
 function Menu() {
-  const [click, setClick] = useState(false);
   const [login, setLogin] = useState(false);
-
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
 
   const redirect = (e) => {
     Router.push(e.target.id)
   }
-
 
   return (
     <>
@@ -26,12 +21,6 @@ function Menu() {
         </div>
         
       </div>
-          
-        
-          
-        
-        
-
     </>
   );
 }

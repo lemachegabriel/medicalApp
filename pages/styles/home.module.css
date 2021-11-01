@@ -52,6 +52,7 @@
 
 .back_img{
     width: 49%;
+    min-width: 450px;
     height: 100%;
     position: absolute;
     right: 0;
@@ -59,4 +60,10 @@
     overflow: hidden;
     margin: 0;
     
+}
+
+@media only screen and (max-width: 590px) {
+    .texts{
+        top: 120%;
+    }
 }

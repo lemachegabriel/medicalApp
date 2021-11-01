@@ -1,55 +1,39 @@
-.register {
+.modal{
+    min-width: 30%;
+}
+.title{
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-
-    background-color: #000000;
-    margin-left: -10px;
-    margin-right: -100px;
-    margin-top: -10px;
-    margin-bottom: -15px;
-    color: white;
+    width: 98%;
+    height: 50px;
 }
-
+.title h1{
+    margin:auto;
+    vertical-align:middle;
+    color: gray;
+}
 .register_right { 
-    background-color: #29292E;
-    border-radius: 5px;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 50px;
-    padding: 20px;
-    width: 500px;
-    height: 500px;
-}
-
-.register_right h1 {
-    font-family: 'Roboto Slab';
-    font-size: 40px;
-    margin-bottom: 30px;
-}
-
-.register_right h4 {
-    font-family: 'Roboto Slab';
-    font-weight: 300;
-    margin-top: 40px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #e1e1e6;
+    margin-left: 13px;
+    width: 95%;
+    height: 70%;
+    margin-top: 10px;
 }
 
 .register_registerInputName {
     display: flex;
     align-items: center;
-    color: gray;
-    background-color: #1c1c21;
+    color: #8dc63e;
+    background-color: #ffffff;
     border-radius: 5px;
     padding: 3px;
     width: 98%;
     height: 50px;
+    border: 1px solid rgba(0,0,0,.2);
 }
 
 .register_registerInputName svg{
@@ -60,8 +44,8 @@
 .register_registerInputName input {
     background: transparent;
     width: 100%;
-    outline-width: 0;
-    color: #E1E1E6;
+    outline: none;
+    color: #000000;
     border: none;
     font-size: 17px;
     margin-left: 10px;
@@ -71,12 +55,14 @@
 .register_registerInputEmail {
     display: flex;
     align-items: center;
-    color: gray;
-    background-color: #1c1c21;
-    border-radius: 5px;
+    color: #8dc63e;
+    background-color: #ffffff;
     padding: 3px;
+    margin: 8px;
     width: 98%;
     height: 50px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.2);
 }
 
 .register_registerInputEmail svg {
@@ -87,8 +73,8 @@
 .register_registerInputEmail input {
     background: transparent;
     width: 100%;
-    outline-width: 0;
-    color: #E1E1E6;
+    outline: none;
+    color: #000000;
     border: none;
     font-size: 17px;
     margin-left: 10px;
@@ -98,14 +84,13 @@
 .register_registerInputPassword {
     display: flex;
     align-items: center;
-    color: gray;
-    background-color: #1A1A1D;
-    border-radius: 3px;
+    color: #8dc63e;
+    background-color: #ffffff;
     padding: 3px;
-    margin: 5px;
     width: 98%;
     height: 50px;
     border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.2);
 }
 
 .register_registerInputPassword svg {
@@ -116,46 +101,58 @@
 .register_registerInputPassword input {
     background: transparent;
     width: 100%;
-    outline-width: 0;
-    color:  #E1E1E6;
+    outline: none;
+    color:  #000000;
     border: none;
     font-size: 17px;
-    margin-left: 12px;
+    margin-left: 10px;
     margin-right: 10px;
 }
 
 .SelectPro{
+    margin-top: 8px;
     display: flex;
     align-items: center;
-    color: gray;
-    background-color: #1A1A1D;
-    border-radius: 3px;
+    width: 98%;   
+}
+
+.Select{
+    width: 100%; 
+}
+
+.register_but {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    background-color:  #8dc63e; 
     padding: 3px;
     margin: 5px;
     width: 98%;
     height: 50px;
     border-radius: 5px;
-    
+    transition-duration: 100ms;
+    margin-top: 20px;
 }
 
-.register_right button {
-    width: 98%;
-    background-color: #202024;
-    color: #EFF2F5;
-    font-weight: 800;
-    height: 50px;
-    border-radius: 5px;
-    font-size: 18px;
-    margin-top: 5px;
+.register_but a{
+    cursor: pointer;
     border: none;
-
-    outline-width: 0;
+    margin-left: 40%;
+    font-family: 'Quicksand',sans-serif;
+    font-size: 17px;
+    font-weight: 550;
 }
 
-.register_right button:hover {
-    background-color: #121214;
+.register_but:hover {
+    background-color: #bde882;
     color: #EFF2F5;
     cursor: pointer;
+}
+
+.login{
+    color: gray;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 .register_eye {
@@ -164,4 +161,5 @@
     font-size: 30;
     cursor: pointer;
     margin-right: 10px;
+    color: rgb(176, 176, 176);
 }

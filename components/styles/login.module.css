@@ -1,56 +1,20 @@
-.login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-
-    background-color: #ffffff;
-    margin-left: -10px;
-    margin-right: -100px;
-    margin-top: -10px;
-    margin-bottom: -15px;
-    color: white;
+.modal{
+    min-width: 30%;
 }
-
-
+.title{
+    margin-left: 37%;
+    color: gray;
+}
 .login_right { 
     background-color: #ffffff;
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 50px;
-    padding: 20px;
-    width: 500px;
-    height: 500px;
-}
-
-.login_right h1 {
-    font-family: 'Roboto Slab';
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-
-.login_right h4 {
-    font-family: 'Roboto Slab';
-    font-weight: 300;
-    margin-top: 40px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #e1e1e6;
-}
-
-.login_loginInputName {
-    display: flex;
-    align-items: center;
-    color: rgb(19, 16, 16);
-    background-color: #930a0a;
-    border-radius: 5px;
-    padding: 3px;
-    width: 98%;
-    height: 50px;
+    margin-left: 13px;
+    width: 95%;
+    height: 70%;
+    margin-top: 10px;
 }
 
 .login_loginInputEmail {
@@ -112,42 +76,39 @@
     margin-right: 10px;
 }
 
-.SelectPro{
+.login_loginBut{
     display: flex;
     align-items: center;
-    color: gray;
-    background-color: #1A1A1D;
-    border-radius: 3px;
+    color: #ffffff;
+    background-color:  #8dc63e; 
     padding: 3px;
     margin: 5px;
     width: 98%;
     height: 50px;
     border-radius: 5px;
-    
+    transition-duration: 100ms;
+    margin-top: 20px;
 }
 
-.Selectname select{
-    font-size: small;
-}
-
-.login_right button {
-    width: 98%;
-    background-color: #202024;
-    color: #EFF2F5;
-    font-weight: 800;
-    height: 50px;
-    border-radius: 5px;
-    font-size: 18px;
-    margin-top: 5px;
+.login_loginBut a {
+    cursor: pointer;
     border: none;
-
-    outline-width: 0;
+    margin-left: 40%;
+    font-family: 'Quicksand',sans-serif;
+    font-size: 17px;
+    font-weight: 550;
 }
 
-.login_right button:hover {
-    background-color: #121214;
+.login_loginBut:hover {
+    background-color: #bde882;
     color: #EFF2F5;
     cursor: pointer;
+}
+
+.create{
+    color: gray;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 .login_eye {

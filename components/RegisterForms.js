@@ -4,25 +4,30 @@ import { MdEmail, MdLock } from "react-icons/md"
 import { HiEye, HiEyeOff, HiAtSymbol } from "react-icons/hi"
 import styles from "./styles/register.module.css"
 import Select from "react-select";
+import { Modal } from 'react-bootstrap'
 
-function Register() {
+function Register({setReg, reg}) {
    const [name, setName] = useState("")
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
    const [show, setShow] = useState(false)
    const [error, setError] = useState("")
+   const [selMed, setSelMed] = useState()
 
    const options = [
-       {label: "Médico", value:"medico"},
-       {label: "Nutricionista", value:"nutricionista"},
-       {label: "Veterinario", value:"veterinario"}
+       {label: "Médico", value:1},
+       {label: "Nutricionista", value:2},
+       {label: "Veterinario", value:3}
    ]
 
    const handleClick = (e) => {
-      e.preventDefault()
+      e.preventDefault() 
       setShow(!show);
    }
 
+   const handleSelectChange = (e) => {
+      setSelMed(e)
+   }
    const validate = () => {
       let Message = ""
       if(!password){
@@ -39,22 +44,28 @@ function Register() {
    }
 
    const register = async () => {
+      const job = selMed['value']
       if(validate()){
-         const data = await registerUser(name, email, password)
+         const data = await registerUser(name, email, password, job)
          if(data){
             setError(data.error)
          }
-      }
-      
+      } 
    }
    const redirect_login = () => {
       redirect()
     }
 
    return (
-      <div className={styles.register}>
+      <Modal show={reg} onHide={()=> setReg(false)} dialogClassName={styles.modal} size='sm'>
+         <Modal.Header>
+            <div className={styles.title}> 
+               <h1>Registre-se</h1>
+            </div>
+         </Modal.Header>
+         
          <div className={styles.register_right}>
-            <h1>Acessar App</h1>
+            
             <div style={{ fontSize: 12, color: "red" }}>{error}</div>
             <div className={styles.register_registerInputName}>
                <HiAtSymbol/>
@@ -98,20 +109,23 @@ function Register() {
                </div>
             </div>
             <div className={styles.SelectPro}>
-               <div className={styles.Selectname}>Profissão:</div>
-                <Select options={options}>
-
-                </Select>
+               <Select
+                  className={styles.Select}
+                  classNamePrefix={styles.Select}
+                  options={options} 
+                  placeholder='Selecione sua área de trabalho'
+                  onChange={handleSelectChange}
+               />
             </div>
-            <button onClick={register}>
-               Registrar
-            </button>
-            <h4>Já tenho conta!</h4>
-            <button onClick={redirect_login}>
-               Login
-            </button>
+            <div onClick={register} className={styles.register_but}>
+               <a >Registrar</a>
+            </div> 
+            <a className={styles.login} onClick={redirect_login}>Já tenho conta!</a>
+
          </div>
-      </div>
+ 
+      </Modal>
+      
    )
 }
 export default Register
