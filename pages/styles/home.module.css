@@ -39,6 +39,7 @@
     font-size: 15px;
     font-weight: 550;
     transition-duration: 200ms;
+    
 }
 
 .regBut:hover{
@@ -64,6 +65,9 @@
 
 @media only screen and (max-width: 590px) {
     .texts{
-        top: 120%;
+        top: 100%;
+    }
+    .back_img{
+        top: 10%;
     }
 }
