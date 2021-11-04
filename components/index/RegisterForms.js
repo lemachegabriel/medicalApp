@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { registerUser, redirect } from '../lib/api/register'
+import { registerUser, redirect } from '../../lib/api/register'
 import { MdEmail, MdLock } from "react-icons/md"
 import { HiEye, HiEyeOff, HiAtSymbol } from "react-icons/hi"
-import styles from "./styles/register.module.css"
+import styles from "../styles/register.module.css"
 import Select from "react-select";
 import { Modal } from 'react-bootstrap'
 
@@ -120,10 +120,8 @@ function Register({setReg, reg}) {
             <div onClick={register} className={styles.register_but}>
                <a >Registrar</a>
             </div> 
-            <a className={styles.login} onClick={redirect_login}>Já tenho conta!</a>
-
+            <a className={styles.login} onClick={() => {setReg(false)}}>Já tenho conta!</a>
          </div>
- 
       </Modal>
       
    )

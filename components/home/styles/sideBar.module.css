@@ -1,0 +1,10 @@
+.container{
+    box-sizing: border-box;
+    background-color: #23282d;;
+    width: 9vw;
+    height: 100vh;
+    justify-content: center;
+}
+.items{ 
+    width: 100%;
+}

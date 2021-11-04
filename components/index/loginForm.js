@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { loginUser, redirect } from '../lib/api/auth';
+import { loginUser, redirect } from '../../lib/api/auth';
 import { MdEmail, MdLock } from "react-icons/md"
 import { HiEye, HiEyeOff } from "react-icons/hi"
-import styles from "./styles/login.module.css"
+import styles from "../styles/login.module.css"
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, InputGroup, FormControl, Form, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 function Login({setLog, log}) {
    const [email, setEmail] = useState("")
@@ -37,13 +37,9 @@ function Login({setLog, log}) {
          if(data){
             setError(data.error)
          }
-      }
-      
+      }   
    }
-   const redirect_register = () => {
-      redirect()
-    }
-
+   
    return (
       <Modal show={log} onHide={()=> setLog(false)} dialogClassName={styles.modal} size='sm'>
          <Modal.Header>
@@ -53,7 +49,7 @@ function Login({setLog, log}) {
             <div className={styles.login_right}>
                <div style={{ fontSize: 12, color: "red" }}>{error}</div>
                <div className={styles.login_loginInputEmail}>
-                  <MdEmail />
+                  <MdEmail/>
                   <input
                      type="email"
                      placeholder="Digite seu email"
@@ -61,9 +57,8 @@ function Login({setLog, log}) {
                      onChange={e => setEmail(e.target.value)}
                   />
                </div>
-         
                <div className={styles.login_loginInputPassword}>
-                  <MdLock />
+                  <MdLock/>
                   <input
                      placeholder="Digite sua senha"
                      type={show ? "text" : "password"}
@@ -72,22 +67,19 @@ function Login({setLog, log}) {
                   />
                   <div className={styles.login_eye}>
                      {show ? (
-                        <HiEye size={20} onClick={handleClick}
-                        />
-                     ) : (
-                           <HiEyeOff size={20} onClick={handleClick}/>
-                        )}
+                        <HiEye size={20} onClick={handleClick}/>
+                     ):(
+                        <HiEyeOff size={20} onClick={handleClick}/>
+                     )}
                   </div>
                </div>
                <div onClick={login} className={styles.login_loginBut}>
-                  <a >Entrar</a>
+                  <a>Entrar</a>
                </div> 
-               <a className={styles.create} onClick={redirect_register}>Criar nova conta </a>
-               
+               <a className={styles.create} onClick={()=> {setLog(false)}}>Criar nova conta </a>
             </div>
          </Modal.Body>
       </Modal> 
-      
    )
 }
 export default Login
