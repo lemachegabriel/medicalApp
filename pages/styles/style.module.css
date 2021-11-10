@@ -1,26 +1,4 @@
-.style {
-  font: 15px Helvetica, Arial, sans-serif;
-  background: #eee;
-  padding: 100px;
-  text-align: center;
-  transition: 100ms ease-in background;
-    
-}
-.style:hover {
-  background: #ccc;
-}
-
-.button{
-  background-color: rgba(0,118,255,0.9);
-  border: 1px solid rgba(0,118,255,0.9);
-  color: #fff;
-  padding: 0.25rem 1rem;
-  margin: 0;
-  font-weight: 500;
-  border-radius: 30%
-}
-
-.button:hover{
-  background-color: #4CAF50; /* Green */
-  color: white;
+.mainContainer{
+  width: 100%;
+  background-color: rgb(216, 216, 216);
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import styles from "./styles/sideBar.module.css"
-
+import {RiLogoutCircleLine} from 'react-icons/ri'
 
 function SideBar() {
   const [login, setLogin] = useState(false);
@@ -15,7 +15,11 @@ function SideBar() {
       
       <div className={styles.container}>
         <ul className={styles.items}>
-            olasss
+          <li>
+            <RiLogoutCircleLine/>
+            <a>Sair</a>
+          </li>
+          
         </ul>
         
       </div>
