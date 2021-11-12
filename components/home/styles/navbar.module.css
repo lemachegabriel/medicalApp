@@ -6,7 +6,7 @@
   display: fixed;
   width: 100%;
   height: 9vh;
-  min-height: 48px;
+  min-height: 55px;
   z-index: 1;
   top: 0;
   left: 0;
@@ -21,35 +21,49 @@
     left:-5px;
 }
 .userName {
-  width: 150px;
+  width: 130px;
+  height: 55px;
   display: flex;
-  align-items: center;
-  padding-top: 10px;
-  margin-left: 90%;
-  position: relative;
+  right: 0;
+  position: fixed;
   color: #aaacab;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   transition-duration: 100ms;
   
 }
 .userName svg{
-  margin: 5px;
+  position: fixed;
+  top: 15px;
+  right: 95px;
+  
   font-size: 20px;
 }
 .userName a{
-  
-  top: 1px;
+  position: fixed;
+  right: 10px;
+  top: 15px;
   font-size: 15px;
   text-transform: capitalize;
-
+}
+.logout {
+  visibility: hidden;
 }
 
 .userName:hover{
   color: aliceblue;
   cursor: pointer;
-
+  background-color: #32373c;
+  height: 120px;
 }
 
-@media screen and (max-width: 1100px) {
-  .userName {margin-left: 75%;}
+.userName:hover .logout{
+  display: flex;
+  visibility: visible;
+  position: fixed;
+  top: 50px;
+  right: 10px;
+}
+.userName:hover .logout_svg{
+  top: 67px;
+  right: 45px;
 }

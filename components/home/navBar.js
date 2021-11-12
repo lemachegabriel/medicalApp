@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import styles from "./styles/navbar.module.css"
 import {FaUserCircle} from 'react-icons/fa'
+import {RiLogoutCircleLine} from 'react-icons/ri'
 
 function Menu(userData) {
   return (
@@ -11,9 +12,15 @@ function Menu(userData) {
         <div className={styles.userName}>
           <FaUserCircle/>
           <a>Olá, {userData['userData']}</a>
+          <div className={styles.logout}>
+            <RiLogoutCircleLine className={styles.logout_svg}/>
+            <p >Sair</p>
+          </div>
+          
+    
         </div>
         
-      </div>
+      </div>      
     </header>
   );
 }
