@@ -29,7 +29,7 @@
   color: #aaacab;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   transition-duration: 100ms;
-  
+  z-index: 1;
 }
 .userName svg{
   position: fixed;

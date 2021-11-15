@@ -1,8 +1,7 @@
 .container{
-    background-color: #23282d;;
-    width: 9vw;
+    background-color: #23282d;
+    width: 140px;
     height: 100%;
-    min-width: 50px;      
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     z-index: 1; /* Stay on top */
     top: 20; /* Stay at the top */
@@ -20,8 +19,9 @@
     position: relative;
     top: 2%;
     list-style-type: none;
-    font-size: 1.3vw;
-    padding-top: 40px;
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     transition-duration: 100ms;
 }
 .item svg{
@@ -31,17 +31,34 @@
 .item:hover{
     color: aliceblue;
     cursor: pointer;
+    background-color: #15181b;
 }
 .logout{    
+    padding-left: 5px;
     display: flex;
+    align-items: center;
+    color: #aaacab;
+    margin: 0;
+    position: relative;
+    top: 2%;
+    list-style-type: none;
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition-duration: 100ms;
+    top: 25%;
+
+
+    /* display: flex;
     align-items: center;
     color: #aaacab;
     position: fixed;
     padding-left: 5px;
     top: 88%;
+    width: 100%;
     list-style-type: none;
-    font-size: 1.3vw;
-    transition-duration: 100ms;
+    font-size: 18px;
+    transition-duration: 100ms; */
 }
 .logout svg{
     padding-right: 5px;
@@ -49,4 +66,33 @@
 .logout:hover{
     color: aliceblue;
     cursor: pointer;
+    background-color: #15181b;
+}
+
+@media only screen and (max-width: 940px) {
+    .item a{
+        visibility: hidden;
+        font-size: 1px;
+        padding: 0;
+    }
+    .item svg{
+        padding-left: 10px;
+        font-size: 22px;
+    }
+    .container{
+        width: 55px;
+    }
+    .logout a{
+        visibility: hidden;
+        font-size: 1px;
+        padding: 0;
+    }
+    .logout svg{
+        padding-left: 10px;
+        font-size: 22px;
+    }
+    .logout{
+        top: 20%;
+    }
+    
 }

@@ -16,10 +16,7 @@ function Menu(userData) {
             <RiLogoutCircleLine className={styles.logout_svg}/>
             <p >Sair</p>
           </div>
-          
-    
-        </div>
-        
+        </div>        
       </div>      
     </header>
   );

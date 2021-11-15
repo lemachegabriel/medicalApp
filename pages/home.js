@@ -32,7 +32,7 @@ export default function UserInfo(){
             <>
             <div className={styles.mainContainer}>
                 <Menu userData={User} />
-                <SideBar/>    
+                <SideBar/>
             </div>
             </>
         )}
