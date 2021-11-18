@@ -4,7 +4,7 @@ import styles from "./styles/navbar.module.css"
 import {FaUserCircle} from 'react-icons/fa'
 import {RiLogoutCircleLine} from 'react-icons/ri'
 
-function Menu(userData) {
+export default function Menu(userData) {
   return (
     <header className={styles.navBar}>
       <div className={styles.container}>
@@ -14,12 +14,10 @@ function Menu(userData) {
           <a>Olá, {userData['userData']}</a>
           <div className={styles.logout}>
             <RiLogoutCircleLine className={styles.logout_svg}/>
-            <p >Sair</p>
+            <p>Sair</p>
           </div>
         </div>        
       </div>      
     </header>
   );
 }
-
-export default Menu;

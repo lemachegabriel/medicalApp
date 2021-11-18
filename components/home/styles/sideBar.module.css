@@ -3,12 +3,13 @@
     width: 140px;
     height: 100%;
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 20; /* Stay at the top */
+    z-index: 0; /* Stay on top */
+    top: 40px; /* Stay at the top */
     left: 0;
-    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
 .item{
     padding-left: 5px;
@@ -77,7 +78,7 @@
     }
     .item svg{
         padding-left: 10px;
-        font-size: 22px;
+        font-size: 25px;
     }
     .container{
         width: 55px;
@@ -89,10 +90,10 @@
     }
     .logout svg{
         padding-left: 10px;
-        font-size: 22px;
+        font-size: 25px;
     }
     .logout{
-        top: 20%;
+        top: 15%;
     }
     
 }

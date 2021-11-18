@@ -6,12 +6,23 @@ import {FaEnvira} from 'react-icons/fa'
 import {MdOutlineMedicalServices} from 'react-icons/md'
 import {AiOutlineStar} from 'react-icons/ai'
 import Receitas from './tools/receitas';
+import Ativos from './tools/ativos';
 
-function SideBar() {
-  const [selected, setSelected] = useState('')
+export default function SideBar() {
+  const [selected, setSelected] = useState('ativos')
+
+  useEffect(()=>{
+    const op = localStorage.getItem('option')
+    if(op) setSelected(op)
+  },[])
+  useEffect(()=>{
+    localStorage.setItem('option', selected)
+  })
+  
   return (
     <>
       {selected == 'receitas' && <Receitas/>}
+      {selected == 'ativos' && <Ativos/>}
       <div className={styles.container}>
         <div className={styles.item} onClick={()=>{setSelected('receitas')}} style={{backgroundColor : selected=='receitas' ? '#15181b' : '#23282d'}}>
           <BsFileEarmarkText/>
@@ -41,5 +52,3 @@ function SideBar() {
     </>
   );
 }
-
-export default SideBar;
