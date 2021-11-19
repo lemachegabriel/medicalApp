@@ -85,7 +85,15 @@
     border-radius: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     height: 50px;
+    transition-duration: 200ms;
+    margin-top: 15px;
 }
+.tableContainer:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,.3),0 2px 6px 2px rgba(60,64,67,.15);
+    
+}
+
 .tableContainer ul{
     padding: 0;
     height: 100%;
@@ -119,21 +127,41 @@
     color: rgb(255, 204, 0);
     cursor: pointer;
 }
+
 .listName{
     position: relative;
     display: flex;
     min-width: 90px;
     width: 30%;
-    justify-content: center;
+    justify-content: left;
     font-size: 19px;
     
 }
 .listName a{
     position: absolute;
     top: 13px;
+    left: 10px;
+    color: #636363;
+    
 }
 
-
+.listArrow{
+    position: absolute;
+    display: flex;
+    width: 10%;
+    justify-content: center;   
+    height: 100%;
+    min-width: 55px;
+    right: 0;
+    top: 13px;
+}
+.listArrow svg{
+    font-size: 22px;
+    color: #858786;
+    cursor: pointer;
+        
+    transition: 200ms;
+}
 
 
 @media only screen and (max-width: 940px) {
@@ -141,4 +169,21 @@
         left: 55px;
         width: 88vw;
     }
+    .searchDiv{
+        width: 85%;
+        left: 10%;
+    }
+    .searchInput{
+        margin-top: 15px;
+    }
+    .searchInput input{
+        font-size: 20px;
+    }
+    
+
+    .tableContainer{
+        width: 85%;
+        left: 10%;
+    }
+    
 }
