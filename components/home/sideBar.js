@@ -7,6 +7,7 @@ import {MdOutlineMedicalServices} from 'react-icons/md'
 import {AiOutlineStar} from 'react-icons/ai'
 import Receitas from './tools/receitas';
 import Ativos from './tools/ativos';
+import Doencas from './tools/doencas';
 
 export default function SideBar() {
   const [selected, setSelected] = useState('ativos')
@@ -23,6 +24,7 @@ export default function SideBar() {
     <>
       {selected == 'receitas' && <Receitas/>}
       {selected == 'ativos' && <Ativos/>}
+      {selected == 'doencas' && <Doencas/>}
       <div className={styles.container}>
         <div className={styles.item} onClick={()=>{setSelected('receitas')}} style={{backgroundColor : selected=='receitas' ? '#15181b' : '#23282d'}}>
           <BsFileEarmarkText/>

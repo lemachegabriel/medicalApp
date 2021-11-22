@@ -49,18 +49,23 @@ export default function Ativos(){
             
             {data.slice(1,6).map((value, key)=>{
                 return(
-                    <div className={styles.tableContainer}>
+                    <div className={styles.tableContainer} style={!detail ? {'height': '50px'} : {'height': '150px'}}>
                     <ul>
                         <li className={styles.list} key={key}>
-                            <div className={styles.listStar}>
+                            <div className={detail ? styles.listStar : styles.listStarTurn}>
                                 <FaStar/>
                             </div>
                             <div className={styles.listName}>
                                 <a>{value['name']}</a>
                             </div>  
-                            <div onClick={()=>setDetail(!detail)} className={styles.listArrow} >
-                                <MdPlayArrow />
+                            <div onClick={()=>{setDetail(!detail)}} className={styles.listArrow} >
+                                <MdPlayArrow className={!detail ? styles.arrow : styles.arrowTurn}/>
                             </div>
+                            {detail && (
+                                <div>
+                                    olassss
+                                </div>
+                            )}
                         </li>
                     </ul>
                     </div>
