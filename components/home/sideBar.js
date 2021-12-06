@@ -36,7 +36,7 @@ export default function SideBar() {
         </div>
         <div className={styles.item} onClick={()=>setSelected('doencas')} style={{backgroundColor : selected=='doencas' ? '#15181b' : '#23282d'}}>
           <MdOutlineMedicalServices/>
-          <a>Doenças</a>
+          <a>Categorias</a>
         </div>
         <div className={styles.item} onClick={()=>setSelected('ajustes')} style={{backgroundColor : selected=='ajustes' ? '#15181b' : '#23282d'}}>
           <RiSettings4Line/>
