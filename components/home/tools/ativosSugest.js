@@ -1,6 +1,7 @@
 import styles from '../styles/tools/ativosSugest.module.css'
 import {CgPill} from 'react-icons/cg'
 import {AiOutlineDoubleRight} from 'react-icons/ai'
+import {BsQuestionCircle} from 'react-icons/bs'
 import React, { useState } from 'react'
 
 export default function AtivosSugest(){
@@ -29,9 +30,31 @@ export default function AtivosSugest(){
             </div>
         </div>
         {showDesc && (
+            <>
             <div className={styles.ativosDescription}>
-                {sugestions[showDesc].name}
+                <div className={styles.headDesciption}>
+                    <BsQuestionCircle/>
+                    <a>{sugestions[showDesc].name}</a>
+                </div>
+                <div className={styles.description}>
+                    <div className={styles.descriptionText}>
+                        <a>
+                        Carcinina) é um ativo que tem como objetivo o controle glicêmico e a 
+melhora da resposta a secreção de insulina, diminuição da formação 
+dos AGES, do estresse de retículo endoplasmático e estresse oxidati-
+vo. Estudos mostram que Glycoxil® diminui os parâmetros inflamató-
+rios, como: PCR (proteína C reativa), ácido úrico e ferritina
+                        </a>
+                    </div>
+                    <div className={styles.descriptionDosagem}>
+                        <a>
+                            Dosagem:
+                        </a>
+                    </div>
+                </div>
             </div>
+            <div style={{height: '20px', top: '180px', position: 'relative'}}></div>
+            </>
         )}
         
         </>
