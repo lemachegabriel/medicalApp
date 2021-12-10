@@ -34,7 +34,7 @@ export default function SideBar() {
           <FaEnvira/>
           <a>Ativos</a>
         </div>
-        <div className={styles.item} onClick={()=>setSelected('doencas')} style={{backgroundColor : selected=='categorias' ? '#15181b' : '#23282d'}}>
+        <div className={styles.item} onClick={()=>setSelected('categorias')} style={{backgroundColor : selected=='categorias' ? '#15181b' : '#23282d'}}>
           <MdOutlineMedicalServices/>
           <a>Categorias</a>
         </div>
