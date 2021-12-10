@@ -5,7 +5,7 @@ import {AiOutlineDoubleRight} from 'react-icons/ai'
 
 export default function Doencas(){
     const [wordEntered, setWordEntered] = useState('')
-    const [dataCategoria, setDataCategoria] = useState()
+    const [dataCategoria, setDataCategoria] = useState([])
     const sugestionsCa = [{'name': 'Redução de cortisol', 'id': '1'}, {'name': 'Moduladores de insulina'}, {'name': 'Foco e energia concentrada'}, {'name': 'Manutenção da saúde muscular'}, 
     {'name': 'Pré-treino'}, {'name': 'Reposição de Cálcio'}, {'name': 'Firmador e Drenante'}]
 

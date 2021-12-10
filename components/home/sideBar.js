@@ -24,7 +24,7 @@ export default function SideBar() {
     <>
       {selected == 'receitas' && <Receitas/>}
       {selected == 'ativos' && <Ativos/>}
-      {selected == 'doencas' && <Doencas/>}
+      {selected == 'categorias' && <Doencas/>}
       <div className={styles.container}>
         <div className={styles.item} onClick={()=>{setSelected('receitas')}} style={{backgroundColor : selected=='receitas' ? '#15181b' : '#23282d'}}>
           <BsFileEarmarkText/>
@@ -34,7 +34,7 @@ export default function SideBar() {
           <FaEnvira/>
           <a>Ativos</a>
         </div>
-        <div className={styles.item} onClick={()=>setSelected('doencas')} style={{backgroundColor : selected=='doencas' ? '#15181b' : '#23282d'}}>
+        <div className={styles.item} onClick={()=>setSelected('doencas')} style={{backgroundColor : selected=='categorias' ? '#15181b' : '#23282d'}}>
           <MdOutlineMedicalServices/>
           <a>Categorias</a>
         </div>
