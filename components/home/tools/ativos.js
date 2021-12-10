@@ -8,7 +8,7 @@ import {BsQuestionCircle} from 'react-icons/bs'
 
 export default function Ativos(){
     const [wordEntered, setWordEntered] = useState('')
-    const [data, setData] = useState('')
+    const [data, setData] = useState()
     const [open, setOpen] = useState()
 
     useEffect(()=>{
