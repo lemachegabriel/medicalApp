@@ -8,7 +8,7 @@ import {BsQuestionCircle} from 'react-icons/bs'
 
 export default function Ativos(){
     const [wordEntered, setWordEntered] = useState('')
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
     const [open, setOpen] = useState()
 
     useEffect(()=>{
@@ -18,8 +18,8 @@ export default function Ativos(){
         if(da) setData(JSON.parse(da))
       },[])
     useEffect(()=>{
-    localStorage.setItem('search', wordEntered)
-    localStorage.setItem('data', JSON.stringify(data))
+        localStorage.setItem('search', wordEntered)
+        localStorage.setItem('data', JSON.stringify(data))
     })
 
     const handleChange = (e) => {
@@ -64,7 +64,7 @@ export default function Ativos(){
                     <a className={styles.limpar} onClick={clear}>Limpar</a>
                 </div>
             )}
-            {data ? data.slice(0,10).map((value, key)=>{ return(
+            {data ? data.slice(1,10).map((value, key)=>{ return(
                 <div className={styles.tableContainer} style={open==key ? {minHeight: '100px'} : {minHeight: '50px'}}> 
                     <div className={open==key ? styles.listHeaderTurn : styles.listHeader}>
                         <FaStar className={open==key ? styles.listStar : styles.listStarTurn}/>

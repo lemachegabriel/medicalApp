@@ -6,8 +6,7 @@ import {AiOutlineDoubleRight} from 'react-icons/ai'
 export default function Doencas(){
     const [wordEntered, setWordEntered] = useState('')
     const [dataCategoria, setDataCategoria] = useState()
-    const [open, setOpen] = useState()
-    const sugestions = [{'name': 'Redução de cortisol', 'id': '1'}, {'name': 'Moduladores de insulina'}, {'name': 'Foco e energia concentrada'}, {'name': 'Manutenção da saúde muscular'}, 
+    const sugestionsCa = [{'name': 'Redução de cortisol', 'id': '1'}, {'name': 'Moduladores de insulina'}, {'name': 'Foco e energia concentrada'}, {'name': 'Manutenção da saúde muscular'}, 
     {'name': 'Pré-treino'}, {'name': 'Reposição de Cálcio'}, {'name': 'Firmador e Drenante'}]
 
     useEffect(()=>{
@@ -17,8 +16,8 @@ export default function Doencas(){
         if(da) setDataCategoria(JSON.parse(da))
       },[])
     useEffect(()=>{
-    localStorage.setItem('searchCategoria', wordEntered)
-    localStorage.setItem('dataCategoria', JSON.stringify(dataCategoria))
+        localStorage.setItem('searchCategoria', wordEntered)
+        localStorage.setItem('dataCategoria', JSON.stringify(dataCategoria))
     })
     const handleChange = (e) => {
         setWordEntered(e.target.value)
@@ -30,13 +29,7 @@ export default function Doencas(){
             setDataCategoria(DATA)
         }  
     }
-    const handelClick = (key) => {
-        if(key == open){
-            setOpen(null)
-        }else{
-            setOpen(key)
-        }
-    }
+    
     const clear = () => {
         setDataCategoria('')
         localStorage.setItem('dataCategoria', dataCategoria)
@@ -71,7 +64,7 @@ export default function Doencas(){
                         <a>Categorias mais pesquisadas:</a>
                     </div>
                     <div className={styles.sugestions}>
-                        {sugestions.map((value, key)=> {return(
+                        {sugestionsCa.map((value, key)=> {return(
                             <div className={styles.sugsLines}>
                                 <a id={key} >{value.name}</a>
                                 <AiOutlineDoubleRight id={key} />
