@@ -195,5 +195,9 @@
         width: 85%;
         left: 10%;
     }
+    .sugsLines{
+        width: 96%;
+        padding: 10px 5px;
+    }
     
 }
