@@ -36,7 +36,7 @@
   position: fixed;
   top: 15px;
   right: 95px;
-  
+  padding-right: 6px;
   font-size: 20px;
 }
 .userName a{

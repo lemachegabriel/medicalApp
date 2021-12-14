@@ -8,6 +8,7 @@ import {AiOutlineStar} from 'react-icons/ai'
 import Receitas from './tools/receitas';
 import Ativos from './tools/ativos';
 import Doencas from './tools/doencas';
+import Favoritos from './tools/favorites';
 
 export default function SideBar() {
   const [selected, setSelected] = useState('ativos')
@@ -25,6 +26,7 @@ export default function SideBar() {
       {selected == 'receitas' && <Receitas/>}
       {selected == 'ativos' && <Ativos/>}
       {selected == 'categorias' && <Doencas/>}
+      {selected == 'favoritos' && <Favoritos/>}
       <div className={styles.container}>
         <div className={styles.item} onClick={()=>{setSelected('receitas')}} style={{backgroundColor : selected=='receitas' ? '#15181b' : '#23282d'}}>
           <BsFileEarmarkText/>
@@ -36,12 +38,12 @@ export default function SideBar() {
         </div>
         <div className={styles.item} onClick={()=>setSelected('categorias')} style={{backgroundColor : selected=='categorias' ? '#15181b' : '#23282d'}}>
           <MdOutlineMedicalServices/>
-          <a>Categorias</a>
+          <a>Patologias</a>
         </div>
-        <div className={styles.item} onClick={()=>setSelected('ajustes')} style={{backgroundColor : selected=='ajustes' ? '#15181b' : '#23282d'}}>
+        {/* <div className={styles.item} onClick={()=>setSelected('ajustes')} style={{backgroundColor : selected=='ajustes' ? '#15181b' : '#23282d'}}>
           <RiSettings4Line/>
           <a>Ajustes</a>
-        </div>
+        </div> */}
         <div className={styles.item} onClick={()=>setSelected('favoritos')} style={{backgroundColor : selected=='favoritos' ? '#15181b' : '#23282d'}}>
           <AiOutlineStar/>
           <a>Favoritos</a>

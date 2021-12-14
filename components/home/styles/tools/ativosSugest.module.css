@@ -3,9 +3,9 @@
     background-color: #fbfbfb;;
     position: relative;
     left: 19%;
-    top: 140px;
+    top: 160px;
     width: 70%;
-    height: 300px;
+    min-height: 200px;
     border: 1px solid #dadce0;
     border-radius: 10px;
     font-family: 'Red Hat Text', sans-serif;
@@ -115,14 +115,14 @@
 
 @media only screen and (max-width: 940px) {
     .container{
-        margin-left: 14px;
-        width: 85%;
-        left: 10%;
+        margin-left: 13px;
+        width: 82%;
+        left: 12%;
     }
     .ativosDescription{
-        margin-left: 14px;
-        width: 85%;
-        left: 10%;
+        margin-left: 13px;
+        width: 82%;
+        left: 12%;
     }
 }
 

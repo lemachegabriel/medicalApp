@@ -40,10 +40,10 @@ export default function AtivosSugest(){
                     <div className={styles.descriptionText}>
                         <a>
                         Carcinina) é um ativo que tem como objetivo o controle glicêmico e a 
-melhora da resposta a secreção de insulina, diminuição da formação 
-dos AGES, do estresse de retículo endoplasmático e estresse oxidati-
-vo. Estudos mostram que Glycoxil® diminui os parâmetros inflamató-
-rios, como: PCR (proteína C reativa), ácido úrico e ferritina
+                        melhora da resposta a secreção de insulina, diminuição da formação 
+                        dos AGES, do estresse de retículo endoplasmático e estresse oxidati-
+                        vo. Estudos mostram que Glycoxil® diminui os parâmetros inflamató-
+                        rios, como: PCR (proteína C reativa), ácido úrico e ferritina
                         </a>
                     </div>
                     <div className={styles.descriptionDosagem}>

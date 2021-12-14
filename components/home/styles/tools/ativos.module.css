@@ -83,17 +83,12 @@
     height: 25px;
     top: 160px;
     position: relative;
-    display: flex;
-    
     left: 19%;
-    display: flex;   
-    flex-flow: row wrap;
+    flex-flow: row wrap;    
 }
 .limpar{
     background-color: #fbfbfb;;
-    position: absolute;
-    width: 70px;
-    right: 0;
+    position: relative;
     border: 0.12rem solid #dadce0;
     border-radius: 30px;
     color: #858786;
@@ -103,6 +98,8 @@
     text-align: center;
     transition-duration: 200ms;
     padding-bottom: 2px;
+    padding: 5px;
+    margin-right: 5px;
 }
 
 .limpar:hover{
@@ -110,6 +107,27 @@
     transform: scale(1.01);
     box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0;
 }   
+
+.pages{
+    width: 70%;
+    height: 25px;
+    padding: 10px;
+    top: 160px;
+    position: relative;
+    left: 19%;
+    flex-flow: row wrap; 
+    text-align: center; 
+}
+.pages a{
+    color: #858786;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: proxima-nova, Arial, Helvetica, "Open Sans", sans-serif;
+    padding: 6px;
+}
+.pages a:hover{
+    color: #8fcb3c;
+}
 
 /*//////////////////////////////////////////////////////////// TABLE  /////////////////////////////////////////////////////*/
 
@@ -222,8 +240,8 @@
 @media only screen and (max-width: 940px) {
     .searchDiv{
         margin-left: 13px;
-        width: 85%;
-        left: 10%;
+        width: 82%;
+        left: 12%;  
     }
     .searchInput{
         margin-top: 15px;
@@ -234,13 +252,13 @@
     
     .filters{
         margin-left: 13px;
-        width: 85%;
-        left: 10%;
+        width: 82%;
+        left: 12%;
     }
     .tableContainer{
         margin-left: 13px;
-        width: 85%;
-        left: 10%;
+        width: 82%;
+        left: 12%;
     }
     
 }
