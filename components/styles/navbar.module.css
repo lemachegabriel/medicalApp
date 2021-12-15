@@ -1,14 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,500;1,600&family=Sarala:wght@700&display=swap');
 
-
 .logo{
   position: absolute;
   top: 3%;
   left: 6%;
   cursor: pointer;
   margin-right: 10px;
-
-  
 }
 .loginBut{
     position: absolute;

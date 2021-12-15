@@ -9,9 +9,11 @@ import Receitas from './tools/receitas';
 import Ativos from './tools/ativos';
 import Doencas from './tools/doencas';
 import Favoritos from './tools/favorites';
+import { logout, redirect } from '../../lib/api/auth';
 
 export default function SideBar() {
   const [selected, setSelected] = useState('ativos')
+  const [favs, setFavs] = useState()
 
   useEffect(()=>{
     const op = localStorage.getItem('option')
@@ -20,7 +22,11 @@ export default function SideBar() {
   useEffect(()=>{
     localStorage.setItem('option', selected)
   })
-  
+
+  const out = async ()=>{
+    await logout()
+    redirect()
+  }
   return (
     <>
       {selected == 'receitas' && <Receitas/>}
@@ -49,8 +55,8 @@ export default function SideBar() {
           <a>Favoritos</a>
         </div>
         <div className={styles.logout}>
-          <RiLogoutCircleLine/>
-          <a>Sair</a>
+          <RiLogoutCircleLine onClick={out}/>
+          <a onClick={out}>Sair</a>
         </div>        
       </div>
     </>

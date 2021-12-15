@@ -1,0 +1,128 @@
+.container{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    
+}
+/* ///////////////////////////////////////////////////// HEADER ////////////////////////////////////////////////////////////////// */
+.header{
+    position: relative;
+    min-height: 80px;
+}
+.header img{
+    position: relative;
+    padding: 2% 2%;
+    
+}
+.header a{
+    position: absolute;
+    right: 5%;
+    margin-top: 3%;
+    cursor: pointer;
+    padding: 11px 35px;
+    background: linear-gradient(90deg,#8dc63d 0%,#8dc63e 29.54%,#8dc63f 75.59%,#8dc63d 100.02%);
+    border-radius: 50px;
+    border: none;
+    color: #fff;
+    box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0; 
+    text-decoration: none;
+    font-family: 'Quicksand',sans-serif;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 550;
+    transition-duration: 100ms;
+}
+.header a:hover{
+    color: #fff;
+    text-decoration: none;
+    transform: scale(1.05);
+    box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0;
+    border: none;
+}
+
+/* ////////////////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////// */
+
+.body{
+    width: 100%;
+    height: 100%;
+    
+}
+.texts{
+    padding-top: 90px;
+    left: 50px;
+    position: absolute;
+    display: inline-block;
+    width: 50%;
+}
+.texts h1{
+    font-family: 'Poppins',sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: #343232;
+}
+.texts p{
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6em;
+    margin-bottom: 10px;
+    font-family: 'Quicksand',sans-serif;
+    color: #343232;
+
+}
+.image{
+    display: inline-block;
+    padding-top: 70px;
+    width: 60%;
+    position: absolute;
+    right: 0;
+}
+.image img{
+    float: right;
+    position: relative;
+    right: 0;
+    width: 78%;
+    min-width: 480px;
+}
+.regBut{
+    position: absolute;
+    margin-top: 15px;
+    cursor: pointer;
+    padding: 12px 30px;
+    background: linear-gradient(90deg,#FF0060 0%,#FF1B6A 29.54%,#FF4077 75.59%,#FF4E7C 100.02%);
+    padding: 16px 35px;
+    border-radius: 50px;
+    border: none;
+    color: #fff;
+    box-shadow: rgba(0,0,0,.24) 0 4px 12px 0;
+    text-decoration: none;
+    font-family: 'Quicksand',sans-serif;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 550;
+    transition-duration: 200ms;
+    
+}
+
+.regBut:hover{
+    color: #fff;
+  text-decoration: none;
+  transform: scale(1.05);
+  box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0;
+  cursor: pointer;
+  border: none;
+}
+
+@media only screen and (max-width: 1000px) {
+    .texts {
+        width: 40%;
+    }
+}
+@media only screen and (max-width: 860px) {
+    .texts{
+        width: 90%;
+        top: 500px;
+    }
+}
+        
