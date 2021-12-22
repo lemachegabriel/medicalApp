@@ -22,7 +22,7 @@ export default function teste2(){
                         <div className={styles.register}>
                             <a>Faça parte da Activus</a>
                         </div>
-                        <div className={styles.containerRest}>
+                        {/* <div className={styles.containerRest}>
                             <div className={styles.descriptions}>
                                 <div className={styles.about}>
                                     <a>Sua plataforma interativa pronta para sua prescrição magistral</a>
@@ -30,7 +30,7 @@ export default function teste2(){
                                 
                                 
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     
                 </div>
