@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jaldi&display=swap');
+
+.videoBG{
+    position: fixed;
+    width: 105%;    
+    z-index: -1;
+    top: 30px;
+    
+}
+.bottomHalf{
+    background-color: #23282d;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    box-shadow: 0px 11px 41px 0px rgba(35,40,45,0.42);
+    z-index: 1;
+}
+
+.menuHeader{
+    top: 20px;
+    right: 10px;
+    position: absolute;
+    color: #aaacab;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition-duration: 100ms;
+    
+}
+
+/* /////////////////////////////////////////////////////////////////////////// */
+
+.containerVideo{
+    position: relative;
+    display: flex;
+}
+.title{
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    /* font-family: 'Raleway', sans-serif; */
+    font-family: 'Jaldi', sans-serif;
+    color: white;
+    font-size: 5.5vw;
+    margin-top: calc(60px + 7%);
+  
+}
+.register{ 
+    margin-top: 6%;
+    font-size: 2.2vw;
+    padding: 0;
+    border: 2px white solid;
+    border-left: none;
+    border-right: none;
+}
+.register a:hover{
+    cursor: pointer;
+    text-decoration: underline; 
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.containerRest{
+    position: relative;
+    margin-top: 7%;
+    width: 100%;
+    background-color: #fbfbfb;
+}
+.descriptions{
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: relative;
+    color: black;
+    padding-top: 30px;
+    width: 90%;
+    font-family: 'Red Hat Text', sans-serif;  
+}
+.about{
+    position: relative;
+    width: 100%;
+    font-size: 3vw;
+}

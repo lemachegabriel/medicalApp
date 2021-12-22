@@ -6,6 +6,8 @@ import styles from "../styles/register.module.css"
 import Select from "react-select";
 import { Modal } from 'react-bootstrap'
 
+
+
 function Register({setReg, reg}) {
    const [name, setName] = useState("")
    const [email, setEmail] = useState("")
@@ -13,6 +15,7 @@ function Register({setReg, reg}) {
    const [show, setShow] = useState(false)
    const [error, setError] = useState("")
    const [selMed, setSelMed] = useState()
+   
 
    const options = [
        {label: "Médico", value:1},
@@ -24,7 +27,7 @@ function Register({setReg, reg}) {
       e.preventDefault() 
       setShow(!show);
    }
-
+   
    const handleSelectChange = (e) => {
       setSelMed(e)
    }
@@ -46,7 +49,7 @@ function Register({setReg, reg}) {
    const register = async () => {
       const job = selMed['value']
       if(validate()){
-         const data = await registerUser(name, email, password, job)
+         const data = await createUserWithEmailAndPassword(auth, email, password)
          if(data){
             setError(data.error)
          }

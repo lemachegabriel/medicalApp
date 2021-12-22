@@ -4,17 +4,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from 'react-bootstrap';
 import Register from '../components/index/RegisterForms';
 import React, { useState } from 'react';
-import { verify_cookie_auth } from '../lib/api/auth'
+import {verify_user_logIn} from '../lib/api/auth'
 import router from 'next/router'
+
 
 export default function index(){
     const [register, setRegister] = useState(false);
     
     const validate = async () => {
-        const data = await verify_cookie_auth()
-        if(data['auth'] === true){
-            router.push('/home')
-        }
+        const data = await verify_user_logIn()
+       
     }
     validate()
     return(
