@@ -1,4 +1,7 @@
 import styles from './styles/teste.module.css'
+import {BsFileEarmarkText} from 'react-icons/bs'
+import {MdOutlineMedicalServices} from 'react-icons/md'
+import {FaEnvira} from 'react-icons/fa'
 export default function teste2(){
     
 
@@ -25,9 +28,25 @@ export default function teste2(){
                             <div className={styles.descriptions}>
                                 <div className={styles.about}>
                                     <h1>Sua plataforma interativa pronta para sua prescrição magistral</h1>
-                                    <a>Tenha em suas mãos dicas de ativos farmaceuticos, posologias, formulações e interações medicamentosas</a>
+                                    Tenha em suas mãos dicas de ativos farmaceuticos, posologias, formulações e interações medicamentosas
                                 </div>
-                                
+                                <div className={styles.products}>
+                                    <div className={styles.productsInfo}>
+                                        <FaEnvira/>
+                                        <h1>Ativos</h1>
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',</p>
+                                    </div>
+                                    <div className={styles.productsInfo}>
+                                        <MdOutlineMedicalServices/>
+                                        <h1>Patologias</h1>
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',</p>
+                                    </div>
+                                    <div className={styles.productsInfo}>
+                                        <BsFileEarmarkText/>
+                                        <h1>Receitas</h1>
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',</p>
+                                    </div>
+                                </div>
                                 
                             </div>
                         </div>
