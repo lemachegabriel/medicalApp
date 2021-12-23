@@ -1,128 +1,159 @@
-.container{
-    background-color: rgb(255, 255, 255);
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jaldi&display=swap');
+
+.videoBG{
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: -1;
+    top: 30px;
     width: 100%;
-    height: 100%;
     
 }
-/* ///////////////////////////////////////////////////// HEADER ////////////////////////////////////////////////////////////////// */
-.header{
-    position: relative;
-    min-height: 80px;
+.bottomHalf{
+    background-color: #23282d;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    box-shadow: 0px 11px 41px 0px rgba(35,40,45,0.42);
+    z-index: 1;
 }
-.header img{
-    position: relative;
-    padding: 2% 2%;
-    
-}
-.header a{
+
+.menuHeader{
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 10px;
     position: absolute;
-    right: 5%;
-    margin-top: 3%;
+    color: #aaacab;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    transition-duration: 100ms;    
+}
+.menuHeader a{
     cursor: pointer;
-    padding: 11px 35px;
-    background: linear-gradient(90deg,#8dc63d 0%,#8dc63e 29.54%,#8dc63f 75.59%,#8dc63d 100.02%);
-    border-radius: 50px;
-    border: none;
-    color: #fff;
-    box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0; 
-    text-decoration: none;
-    font-family: 'Quicksand',sans-serif;
-    text-align: center;
-    font-size: 17px;
-    font-weight: 550;
-    transition-duration: 100ms;
+    padding-left: 30px;
 }
-.header a:hover{
-    color: #fff;
-    text-decoration: none;
-    transform: scale(1.05);
-    box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0;
-    border: none;
-}
-
-/* ////////////////////////////////////////////////////////// BODY /////////////////////////////////////////////////////////////// */
-
-.body{
-    width: 100%;
-    height: 100%;
-    
-}
-.texts{
-    padding-top: 90px;
-    left: 50px;
+.menuHeader svg{
+    top: 50%;
+    transform: translate(0, -50%);
     position: absolute;
-    display: inline-block;
-    width: 50%;
+    font-size: 20px;
 }
-.texts h1{
-    font-family: 'Poppins',sans-serif;
-    font-weight: 700;
+.menuHeader:hover{
+    color: #d5d7d6;
+}
+/* /////////////////////////////////////////////////////////////////////////// */
+
+.containerVideo{
+    position: relative;
+    display: flex;
+}
+.title{
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    /* font-family: 'Raleway', sans-serif; */
+    font-family: 'Jaldi', sans-serif;
+    color: white;
+    
+    font-size: 5.5vw;
+    margin-top: calc(60px + 7%);
+  
+}
+.register{ 
+    margin-top: 6%;
+    font-size: 2.2vw;
+    padding: 0;
+    border: 2px white solid;
+    border-left: none;
+    border-right: none;
+}
+.register a:hover{
+    cursor: pointer;
+    text-decoration: underline; 
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.containerRest{
+    position: relative;
+    margin-top: 7%;
+    width: 100%;
+    
+    background-color: #fbfbfb;
+}
+.descriptions{
+    left: 50%;
+    transform: translate(-50%, 0);
+    position: relative;
+    color: black;
+    padding-top: 10px;
+    width: 99%;
+    font-family: 'Jaldi', sans-serif;
+}
+.about{
+    padding: 0;
+    color: #454748;
+    position: relative;
+    width: 100%;
+    font-size: 25px;
+}
+.about h1{
+    margin: 0;
+    padding: 0;
     font-size: 2.5rem;
-    line-height: 1.2;
-    color: #343232;
 }
-.texts p{
-    margin-top: 20px;
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.6em;
-    margin-bottom: 10px;
-    font-family: 'Quicksand',sans-serif;
-    color: #343232;
-
-}
-.image{
-    display: inline-block;
-    padding-top: 70px;
-    width: 60%;
-    position: absolute;
-    right: 0;
-}
-.image img{
-    float: right;
+.about a{
     position: relative;
-    right: 0;
-    width: 78%;
-    min-width: 480px;
-}
-.regBut{
-    position: absolute;
-    margin-top: 15px;
-    cursor: pointer;
-    padding: 12px 30px;
-    background: linear-gradient(90deg,#FF0060 0%,#FF1B6A 29.54%,#FF4077 75.59%,#FF4E7C 100.02%);
-    padding: 16px 35px;
-    border-radius: 50px;
-    border: none;
-    color: #fff;
-    box-shadow: rgba(0,0,0,.24) 0 4px 12px 0;
-    text-decoration: none;
-    font-family: 'Quicksand',sans-serif;
-    text-align: center;
-    font-size: 15px;
-    font-weight: 550;
-    transition-duration: 200ms;
+    font-size: 20px;
     
 }
 
-.regBut:hover{
-    color: #fff;
-  text-decoration: none;
-  transform: scale(1.05);
-  box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0;
-  cursor: pointer;
-  border: none;
+.products{
+    padding-top: 40px;
+    width: 90%;    
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.productsInfo{
+    border: 1px solid #dadce0;
+    border-radius: 10px;
+    display: inline-block;
+    position: relative;
+    margin: 10px 15px;
+    width: 25%;
+    color: #8fcb3c;
+    font-size: 70px;
+    min-width: 300px;
+}
+.productsInfo h1{
+    color: #454748;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    line-height: 0.1;
+}
+.productsInfo p{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    font-size: 20px;
+    color: #757575;
 }
 
-@media only screen and (max-width: 1000px) {
-    .texts {
-        width: 40%;
+@media only screen and (max-width: 560px) {
+    .videoBG{
+        width: 180vw;
+    }
+    .title{
+        font-size: 35px;
+    }
+    .register{
+        font-size: 25px;
+        margin-top: 2%;
+    }
+    .containerRest{
+        margin-top: 26%;
     }
 }
-@media only screen and (max-width: 860px) {
-    .texts{
-        width: 90%;
-        top: 500px;
-    }
-}
-        
