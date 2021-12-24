@@ -20,7 +20,7 @@ export default function index(){
             <header>
                 <div className={styles.bottomHalf}>
                     <img className={styles.logo} src='/img/logo.svg'/>
-                    <div className={styles.menuHeader}>
+                    <div className={styles.menuHeader} onClick={()=> router.push('/login')}>
                         <FaUserCircle/>
                         <a>Login</a>
                     </div>
@@ -33,7 +33,7 @@ export default function index(){
                     <div className={styles.title}>
                         <a>A melhor fórmula de prescrição</a>
                         <div className={styles.register}>
-                            <a>Faça parte da Activus</a>
+                            <a onClick={()=> router.push('/register')}>Faça parte da Activus</a>
                         </div>
                         <div className={styles.containerRest}>
                             <div className={styles.descriptions}>
