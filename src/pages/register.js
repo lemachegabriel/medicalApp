@@ -1,74 +1,58 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styles from './styles/register.module.css'
-import Select from "react-select";
 
-export default function register() {
-    const [selMed, setSelMed] = useState()
-    const options = [
-        {label: "Médico", value:1},
-        {label: "Nutricionista", value:2},
-        {label: "Veterinario", value:3}
-    ]
-    const handleSelectChange = (e) => {
-        setSelMed(e)
-     }
+export default function teste() {
     return (
-        <div className={styles.mainContainer}>
-            <div className={styles.header}>
-                <img className={styles.logo} src='/img/logo.svg'/>
+        <div className={styles.main}>
+            <div className={styles.container}>
+                <div className={styles.register}>
+                    <form>
+                        <img className={styles.logo} src='/img/logo.svg' style={{width: '200px'}}/>
+                        <h2>Crie sua conta</h2>
+                        <div className={styles.inputs}>
+                            <label>Email:</label>
+                            <input placeholder='Digite seu email de trabalho'></input>
+                        </div>
+                        <div className={styles.inputs}>
+                            <label>Nome:</label>
+                            <input placeholder='Digite seu nome'></input>   
+                        </div>
+                        <div className={styles.inputs}>
+                            <label>Sobrenome:</label>
+                            <input placeholder='Digite seu sobrenome'></input>   
+                        </div>
+                        <div className={styles.inputs}>
+                            <label>Telefone:</label>
+                            <input placeholder='Digite seu tel com DDD'></input>   
+                        </div>
+                        <div className={styles.select}>
+                            <label>Profissão:</label>
+                            <select>
+                                <option value="" disabled selected>Selecione sua profissão</option>
+                                <option value='0'>médico</option>
+                                <option value='1'>biomedico</option>
+                                <option value='2'>nutricionista</option>
+                                <option value='3'>veterinario</option>
+                            </select>
+                        </div>
+                        <div className={styles.inputs}>
+                            <label>Senha:</label>
+                            <input placeholder='Digite uma senha'></input>   
+                        </div>
+                        <div className={styles.inputs}>
+                            <label>Confime sua senha:</label>
+                            <input placeholder='Digite novemente sua senha'></input>   
+                        </div>
+                        <button className={styles.regButton}>Cadastrar</button>
+                        <span>
+                            Já tem uma conta? 
+                            <a>   Log In</a>
+                        </span>
+                    </form>
+                </div>
+                <div className={styles.sideBarImg}></div>
             </div>
             
-            <div className={styles.container}>
-                <h1>Registre-se na Activus</h1>
-                <div className={styles.form}>
-                    <div className={styles.fields}>
-                        <form>
-                            <label>Nome:</label>
-                            <input placeholder='Digite seu primeiro nome'></input>
-                        </form>
-                    </div>
-                    <div className={styles.fields}>
-                        <form>
-                            <label>Sobrenome:</label>
-                            <input placeholder='Digite seu último nome'></input>
-                        </form>
-                    </div>
-                    <div className={styles.fields} >
-                        <form>
-                            <label>Email:</label>
-                            <input placeholder='Digite seu email'></input>
-                        </form>
-                    </div>
-                    <div className={styles.fields}>
-                        <form>
-                            <label>Telefone:</label>
-                            <input placeholder='Digiter seu tel com o DDD'></input>
-                        </form>
-                    </div>
-                    <div className={styles.selectForm}>
-                        <Select
-                            className={styles.select}
-                            classNamePrefix={styles.select}
-                            options={options} 
-                            placeholder='Selecione sua área de trabalho'
-                            onChange={handleSelectChange}
-                        />
-                    </div>
-                    <div className={styles.fields} >
-                        <form>
-                            <label>Senha:</label>
-                            <input placeholder='Digite uma senha'></input>
-                        </form>
-                    </div>
-                    <div className={styles.fields} >
-                        <form>
-                            <label>Repita senha:</label>
-                            <input placeholder='Repita senha escrita'></input>
-                        </form>
-                    </div>
-                </div>
-                <a>Registrar</a>
-            </div>
         </div>
     )
 }
