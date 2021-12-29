@@ -2,7 +2,7 @@ import styles from "../styles/tools/ativos.module.css"
 import {FaSearch, FaStar} from 'react-icons/fa'
 import {MdPlayArrow} from 'react-icons/md'
 import { useState, useEffect } from "react"
-import { queryMed, indexMed, addFav } from "../../../lib/api/storeMed"
+import { getMed, queryMed } from "../../../lib/api/storeMed"
 import AtivosSugest from "./ativosSugest"
 import {BsQuestionCircle} from 'react-icons/bs'
 import { verify_cookie_auth } from "../../../lib/api/auth"
@@ -40,13 +40,14 @@ export default function Ativos(){
         }
     }
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        if(wordEntered){
-            const DATA = await queryMed(wordEntered)
-            setData(DATA)
-            setAll(false)
-            setPage(0)
-        }
+        // e.preventDefault()
+        // if(wordEntered){
+        //     const DATA = await queryMed(wordEntered)
+        //     setData(DATA)
+        //     setAll(false)
+        //     setPage(0)
+        // }
+        await queryMed()
     }
     const handelClick = (key) => {
         if(key == open){

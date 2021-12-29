@@ -1,100 +1,30 @@
-import axios from 'axios'
-axios.defaults.withCredentials = true
-import { url } from '../config';
+import { doc, setDoc, getDocs, collection, query, where, orderBy, startAt, endAt  } from "firebase/firestore";
+import { firestore } from "../firebase";
 
-export const storeMed = async (data) => {
-  let message = ""
-  await axios.post(`${url}/medcines/medicines`, data, {withCredentials: true})
-  .then((result) => {
-    message = result.data
-  })
-  .catch((error) => {
-    if(error.response) {
-      console.log(error.response.data);
-      console.log(error.response.status);
-      message = error.response.data
-    }})
-    return message
+export const addMed = async () => {
+  await setDoc(doc(firestore, "ativos", "agadgs"), {
+    descricao: "gjasdg a asdgj aj asgj asdg",
+    dosagem: "fasfasf",
+    nome: "agadgs"
+  });
+} 
+
+export const getMed = async () => {
+  const docRef = doc(firestore, 'ativos', 'VvRUC5QsDxzYHzD3fprs')
+  const data = await getDoc(docRef)
+  if (data.exists()) {
+    console.log("Document data:", data.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  } 
 }
 
-export const updateMed = async (id, data) => {
-  let message = ""
-  await axios.put(`${url}/medcines/medicines/${id}`, data, {withCredentials: true})
-  .then((result) => {
-    message = result.data
-  })
-  .catch((error) => {
-    if(error.response) {
-      console.log(error.response.data);
-      console.log(error.response.status);
-      message = error.response.data
-    }})
-    return message
-}
-
-export const indexMed = async () => {
-  let message = ""
-  await axios.get(`${url}/medcines/medicines`, {withCredentials: true})
-  .then((result) => {
-    message = result.data
-  })
-  .catch((error) => {
-    console.log(error.response.data)
-  })
-  return message
-}
-
-export const queryID = async (id) => {
-  let message = ""
-  await axios.get(`${url}/medcines/show/${id}`, {withCredentials: true})
-  .then((result) => {
-    message = result.data
-  })
-  .catch((error) => {
-    console.log(error.response.data)
-  })
-  return message
-}
-
-export const queryMed = async (name) => {
-  let message = ""
-  await axios.post(`${url}/medcines/query`, {name}, {withCredentials: true})
-  .then((result) => {
-    message = result.data
-    
-  })
-  .catch((error) => {
-    if(error.response) {
-      console.log(error.response.data);
-      console.log(error.response.status);
-      message = error.response.data
-    }})
-    return message
-}
-
-export const delMed = async (id) => {
-  let message = ""
-  await axios.get(`${url}/medcines/del/${id}`)
-  .then((result) => {
-    message = result.data
-  })
-  .catch((error) => {
-    console.log(error.response.data)
-  })
-  return message
-}
-
-export const addFav = async (name, _id, userId) => {
-  let message = ""
-  await axios.post(`${url}/api/addFav`, {name, _id, userId}, {withCredentials: true})
-  .then((result) => {
-    message = result.data
-  })
-  .catch((error) => {
-    if(error.response) {
-      // console.log(error.response.data);
-      // console.log(error.response.status);
-      message = error.response.data
-    }})
-    return message
+export const queryMed = async () => {
+  const docRef = collection(firestore, "ativos")
+  const q = query(docRef, orderBy('nome'), startAt('as'), endAt('as' + '\uf8ff' ))
+  const data = await getDocs(q)
+  data.forEach(element => {
+    console.log(element.id, " => ", element.data());
+  });
 }

@@ -1,24 +1,10 @@
-import React, {useState} from 'react'
-import styles from './styles/register.module.css'
-import Select from "react-select";
-
-export default function register() {
-    const [selMed, setSelMed] = useState()
-    const options = [
-        {label: "Médico", value:1},
-        {label: "Nutricionista", value:2},
-        {label: "Veterinario", value:3}
-    ]
-    const handleSelectChange = (e) => {
-        setSelMed(e)
-     }
+import React from 'react'
+import styles from './styles/teste.module.css'
+export default function teste() {
     return (
-        <div className={styles.mainContainer}>
-            <div className={styles.header}>
-                <img className={styles.logo} src='/img/logo.svg'/>
-            </div>
-            
-            <div className={styles.container}>
+        <div className={styles.main}>
+            <div className={styles.container}></div>
+            <div >
                 <h1>Registre-se na Activus</h1>
                 <div className={styles.form}>
                     <div className={styles.fields}>
