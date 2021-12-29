@@ -1,7 +1,11 @@
-import React from 'react'
+import Reactw, {useState} from 'react'
 import styles from './styles/register.module.css'
 
-export default function teste() {
+export default function register() {
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+    const [password, setPassword] = useState('')
+    
     return (
         <div className={styles.main}>
             <div className={styles.container}>
@@ -9,6 +13,7 @@ export default function teste() {
                     <form>
                         <img className={styles.logo} src='/img/logo.svg' style={{width: '200px'}}/>
                         <h2>Crie sua conta</h2>
+                        <div style={{ fontSize: 15, color: "red", fontFamily: 'Poppins, sans-serif' }}>{error}</div>
                         <div className={styles.inputs}>
                             <label>Email:</label>
                             <input placeholder='Digite seu email de trabalho'></input>
