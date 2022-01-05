@@ -9,11 +9,13 @@ import Receitas from './tools/receitas';
 import Ativos from './tools/ativos';
 import Doencas from './tools/doencas';
 import Favoritos from './tools/favorites';
-import { logout, redirect } from '../../lib/api/auth';
+import {useAuth} from '../../contexts/authContext'
+import router from 'next/router';
 
 export default function SideBar() {
   const [selected, setSelected] = useState('ativos')
   const [favs, setFavs] = useState()
+  const {logout} = useAuth()
 
   useEffect(()=>{
     const op = localStorage.getItem('option')
@@ -25,7 +27,9 @@ export default function SideBar() {
 
   const out = async ()=>{
     await logout()
-    redirect()
+    .then(()=>{
+      router.push('/')
+    })
   }
   return (
     <>

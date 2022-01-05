@@ -2,10 +2,9 @@ import styles from "../styles/tools/ativos.module.css"
 import {FaSearch, FaStar} from 'react-icons/fa'
 import {MdPlayArrow} from 'react-icons/md'
 import { useState, useEffect } from "react"
-import { getMed, queryMed } from "../../../lib/api/storeMed"
 import AtivosSugest from "./ativosSugest"
 import {BsQuestionCircle} from 'react-icons/bs'
-import { verify_cookie_auth } from "../../../lib/api/auth"
+import { useAtivos } from "../../../contexts/ativosContext"
 
 export default function Ativos(){
     const [wordEntered, setWordEntered] = useState('')
@@ -13,6 +12,8 @@ export default function Ativos(){
     const [open, setOpen] = useState()
     const [all, setAll] = useState(false)
     const [page, setPage] = useState(0)
+    const {queryMed, getAll} = useAtivos()
+
     useEffect(()=>{
         const op = localStorage.getItem('search')
         const da = localStorage.getItem('data')
@@ -33,21 +34,28 @@ export default function Ativos(){
     }
     const getAllMed = async ()=> {
         if(!all){
+            const DATA = await getAll()
+            const Array = []
+            DATA.forEach(element => {
+                Array.push({id: element.id, data : element.data()})
+            })
             setAll(true)
-            const DATA = await indexMed()
-            setData(DATA)
+            setData(Array)
             setPage(0)
         }
     }
     const handleSubmit = async (e) => {
-        // e.preventDefault()
-        // if(wordEntered){
-        //     const DATA = await queryMed(wordEntered)
-        //     setData(DATA)
-        //     setAll(false)
-        //     setPage(0)
-        // }
-        await queryMed()
+        e.preventDefault()
+        if(wordEntered){
+            const DATA = await queryMed(wordEntered)
+            const Array = []
+            DATA.forEach(element => {
+                Array.push({id: element.id, data : element.data()})
+              });
+            setData(Array)
+            setAll(false)
+            setPage(0)
+        }
     }
     const handelClick = (key) => {
         if(key == open){
@@ -57,7 +65,7 @@ export default function Ativos(){
         }
     }
     const addFavs = async (name, _id)=>{
-        const validate = await verify_cookie_auth()
+        const validate = true
         let confirm = true
         for(let i=0; i<validate.user['favorites'].length; i++){
             if(validate.user['favorites'][i]['_id'] == _id){
@@ -102,16 +110,16 @@ export default function Ativos(){
             {data ? data.slice(0 + (page*8) ,8 + (page*8)).map((value, key)=>{ return(
                 <div className={styles.tableContainer} style={open==key ? {minHeight: '100px'} : {minHeight: '50px'}}> 
                     <div className={open==key ? styles.listHeaderTurn : styles.listHeader}>
-                        <FaStar className={open==key ? styles.listStar : styles.listStarTurn} onClick={()=> addFavs(value['name'], value['_id'])}/>
+                        <FaStar className={open==key ? styles.listStar : styles.listStarTurn} onClick={()=> addFavs(value.data.nome, value['_id'])}/>
                         {open == key && (<BsQuestionCircle className={styles.question}/>)}
-                        <a className={styles.listName} style={open==key ? {left: '80px'} : {}}>{value['name']}</a>
+                        <a className={styles.listName} style={open==key ? {left: '80px'} : {}}>{value.data.nome}</a>
                         <div onClick={()=>{handelClick(key)}} className={styles.listArrow} >
                             <MdPlayArrow className={open==key ? styles.arrowTurn : styles.arrow}/>
                         </div>
                     </div>
                     {open==key && (
                         <div className={styles.description}>
-                            <p>{value['description']}</p>                        
+                            <p>{value.data.descricao}</p>                        
                         </div>
                     )}     
                 </div>

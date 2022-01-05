@@ -55,6 +55,7 @@
   cursor: pointer;
   background-color: #32373c;
   height: 120px;
+  width: 130px;
 }
 
 .userName:hover .logout{

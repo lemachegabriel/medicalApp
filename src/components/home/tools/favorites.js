@@ -1,7 +1,5 @@
 import styles from '../styles/tools/favoritos.module.css'
 import { FaStar } from 'react-icons/fa'
-import { verify_cookie_auth } from '../../../lib/api/auth'
-import { queryID } from '../../../lib/api/storeMed'
 import React, { useState, useEffect } from 'react'
 import {BsQuestionCircle} from 'react-icons/bs'
 import {MdPlayArrow } from 'react-icons/md'

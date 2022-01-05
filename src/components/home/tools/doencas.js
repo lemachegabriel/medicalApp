@@ -1,13 +1,11 @@
+import { useState, useEffect } from "react"
 import styles from "../styles/tools/doencas.module.css"
 import {FaSearch, FaStar} from 'react-icons/fa'
-import { useState, useEffect } from "react"
-import { queryPro, indexPro } from "../../../lib/api/problems"
-import { verify_cookie_auth } from "../../../lib/api/auth"
-import { addFav, queryID } from "../../../lib/api/storeMed"
 import {MdPlayArrow} from 'react-icons/md'
 import {BsQuestionCircle} from 'react-icons/bs'
 import DoencasSugest from "./doencasSugest"
 import {AiOutlineDoubleRight} from 'react-icons/ai'
+import { useDoencas } from "../../../contexts/problemsContext"
 
 export default function Doencas(){
     const [wordEntered, setWordEntered] = useState('')
@@ -16,6 +14,7 @@ export default function Doencas(){
     const [all, setAll] = useState(false)
     const [open, setOpen] = useState()
     const [page, setPage] = useState(0)
+    const {queryDoc, getAll} = useDoencas()
 
     useEffect(()=>{
         const op = localStorage.getItem('searchCategoria')
@@ -37,8 +36,15 @@ export default function Doencas(){
     const handleSubmit = async (e) => {
         e.preventDefault()
         if(wordEntered){
-            const DATA = await queryPro(wordEntered)
-            setDataCategoria(DATA)
+            const Array = []
+            const DATA = await queryDoc(wordEntered)
+            DATA.forEach(element => {
+                // console.log(element.id, )
+                const ativos = element.data().ativos
+                console.log(ativos)
+                Array.push({id: element.id, data : element.data()})
+            })
+            setDataCategoria(Array)
             setAll(false)
             setPage(0)
         }  
@@ -54,9 +60,13 @@ export default function Doencas(){
     }
     const getAllPro = async ()=> {
         if(!all){
+            const DATA = await getAll()
+            const Array = []
+            DATA.forEach(element => {
+                Array.push({id: element.id, data : element.data()})
+            })
             setAll(true)
-            const DATA = await indexPro()
-            setDataCategoria(DATA)
+            setDataCategoria(Array)
             setPage(0)
         }
     }
@@ -116,14 +126,14 @@ export default function Doencas(){
                         
                         {/* <FaStar className={open==key ? styles.listStar : styles.listStarTurn}/>
                         {open == key && (<BsQuestionCircle className={styles.question}/>)} */}
-                        <a className={styles.listName}>{value['name']}</a>
+                        <a className={styles.listName}>{value.data.nome}</a>
                         <div onClick={()=>{handelClick(key)}} className={styles.listArrow} >
                             <MdPlayArrow className={open==key ? styles.arrowTurn : styles.arrow}/>
                         </div>
                     </div>
-                    {open==key && value['medicines'].map((med, keyMed)=>{ return(
+                    {open==key && value.data.ativos.map((med, keyMed)=>{ return(
                         <div id={keyMed} className={styles.description}>
-                            <a id={med['_id']} onClick={getMed} style={med['_id'] == dataMed['_id'] ? {color: ' #8fcb3c'} : {}}>{med['name']}</a>         
+                            <a id={med.uid} onClick={getMed} style={med.uid== dataMed['_id'] ? {color: ' #8fcb3c'} : {}}>{med.nome}</a>         
                             <AiOutlineDoubleRight/>
                         </div>  
                     )})                        

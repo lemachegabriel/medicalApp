@@ -1,8 +1,7 @@
 import styles from '../styles/tools/doencasSugest.module.css'
 import {MdOutlineMedicalServices} from 'react-icons/md'
 import {AiOutlineDoubleRight} from 'react-icons/ai'
-import { queryID } from "../../../lib/api/storeMed"
-import { queryPro} from "../../../lib/api/problems"
+
 
 export default function DoencasSugest(){
     const sugestionsCa = [{'name': 'Redução de cortisol'}, {'name': 'M0oduladores de insulina'}, {'name': 'Foco e energia concentrada'}, {'name': 'Manutenção da saúde muscular'}, 

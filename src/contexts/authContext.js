@@ -1,5 +1,8 @@
-import React, { useContext, useState, useEffect } from "react"
+  import React, { useContext, useState, useEffect } from "react"
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from "firebase/auth";
 import { auth } from "../lib/firebase"
+import { firestore } from "../lib/firebase";
+import { getDoc, doc, setDoc } from "firebase/firestore";
 
 const AuthContext = React.createContext()
 
@@ -8,19 +11,19 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState()
+  const [currentUser, setCurrentUser] = useState(" ")
   const [loading, setLoading] = useState(true)
 
-  function signup(email, password) {
+  function singup(email, password) {
     return createUserWithEmailAndPassword(auth, email, password)
   }
 
   function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password)
+    return signInWithEmailAndPassword(auth, email, password)
   }
 
   function logout() {
-    return auth.signOut()
+    return signOut(auth)
   }
 
   function resetPassword(email) {
@@ -35,10 +38,29 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
+  function getUser(uid){
+    const docRef = doc(firestore, 'usuarios', uid)
+    return getDoc(docRef)
+  }
+
+  function createUser(uid, nome, tel, pro){
+    return setDoc(doc(firestore, 'usuarios', uid), {
+      nome: nome,
+      tel: tel,
+      profissao: pro
+    })
+  }
+
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      setCurrentUser(user)
-      setLoading(false)
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      if(user){
+        setCurrentUser(user)
+        setLoading(false)
+      }else{
+        setCurrentUser(false)
+        setLoading(false)
+      }
+      
     })
 
     return unsubscribe
@@ -47,11 +69,13 @@ export function AuthProvider({ children }) {
   const value = {
     currentUser,
     login,
-    signup,
+    singup,
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    getUser,
+    createUser
   }
 
   return (

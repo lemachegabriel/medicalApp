@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import Router from 'next/router';
+import React, { useState } from 'react';
 import styles from "./styles/navbar.module.css"
 import {FaUserCircle} from 'react-icons/fa'
 import {RiLogoutCircleLine} from 'react-icons/ri'
-import { logout, redirect } from '../../lib/api/auth';
+import {useAuth} from '../../contexts/authContext'
+import router from 'next/router';
 
 export default function Menu(userData) {
+  const [name, setName] = useState('')
+  const {logout} = useAuth()
   const out = async ()=>{
     await logout()
-    redirect()
+    .then(()=>{
+      router.push('/')
+    })
   }
   return (
     <header className={styles.navBar}>
