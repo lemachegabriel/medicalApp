@@ -25,11 +25,10 @@ export default function teste() {
         })
         setData(Array)
     }
-    useEffect(()=> {
-        getAllMed()
-    })
+    
     return (
         <div style={{backgroundColor: 'white', width: '100%', height: '100%', position: 'absolute'}}>
+            <button onClick={getAllMed}>Atualizar</button>
             {data && data.slice(0, data.length).map((value, key)=> { return(
                 <div className={styles.tableContainer} style={open==key ? {minHeight: '100px'} : {minHeight: '50px'}}> 
                     <div className={open==key ? styles.listHeaderTurn : styles.listHeader}>
