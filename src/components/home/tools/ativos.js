@@ -47,11 +47,23 @@ export default function Ativos(){
     const handleSubmit = async (e) => {
         e.preventDefault()
         if(wordEntered){
-            const DATA = await queryMed(wordEntered)
+            const DATA = await getAll()
             const Array = []
             DATA.forEach(element => {
-                Array.push({id: element.id, data : element.data()})
-              });
+                if(element.data().nome.toLowerCase().includes(wordEntered.toLowerCase())){
+                    Array.push({id: element.id, data : element.data()})
+                }
+            });
+            Array.sort((a, b) => {
+                let fa = a.data.nome.toLowerCase(), fb = b.data.nome.toLowerCase();
+                if (fa < fb) {
+                    return -1;
+                }
+                if (fa > fb) {
+                    return 1;
+                }
+                return 0;
+            })
             setData(Array)
             setAll(false)
             setPage(0)
