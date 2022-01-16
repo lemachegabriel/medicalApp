@@ -1,8 +1,8 @@
-  import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged} from "firebase/auth";
 import { auth } from "../lib/firebase"
 import { firestore } from "../lib/firebase";
-import { getDoc, doc, setDoc } from "firebase/firestore";
+import { getDoc, doc, setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
 const AuthContext = React.createContext()
 
@@ -51,6 +51,26 @@ export function AuthProvider({ children }) {
     })
   }
 
+  function addFav(uid ,ativoId, nome){
+    const docRef = doc(firestore, 'usuarios', uid)
+    return updateDoc(docRef, {
+      favoritos: arrayUnion({
+        uid: ativoId,
+        nome: nome
+      })
+    })
+  }
+
+  function removeFav(uid, ativoId, nome){
+    const docRef = doc(firestore, 'usuarios', uid)
+    return updateDoc(docRef, {
+      favoritos: arrayRemove({
+        uid: ativoId,
+        nome: nome
+      })
+    })
+  }
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if(user){
@@ -60,7 +80,6 @@ export function AuthProvider({ children }) {
         setCurrentUser(false)
         setLoading(false)
       }
-      
     })
 
     return unsubscribe
@@ -75,7 +94,9 @@ export function AuthProvider({ children }) {
     updateEmail,
     updatePassword,
     getUser,
-    createUser
+    createUser,
+    addFav,
+    removeFav
   }
 
   return (

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import AtivosSugest from "./ativosSugest"
 import {BsQuestionCircle} from 'react-icons/bs'
 import { useAtivos } from "../../../contexts/ativosContext"
+import { useAuth } from "../../../contexts/authContext"
 
 export default function Ativos(){
     const [wordEntered, setWordEntered] = useState('')
@@ -12,7 +13,8 @@ export default function Ativos(){
     const [open, setOpen] = useState()
     const [all, setAll] = useState(false)
     const [page, setPage] = useState(0)
-    const {queryMed, getAll} = useAtivos()
+    const {getAll} = useAtivos()
+    const {addFav, currentUser} = useAuth()
 
     useEffect(()=>{
         const op = localStorage.getItem('search')
@@ -64,6 +66,7 @@ export default function Ativos(){
                 }
                 return 0;
             })
+            console.log(Array)
             setData(Array)
             setAll(false)
             setPage(0)
@@ -77,18 +80,7 @@ export default function Ativos(){
         }
     }
     const addFavs = async (name, _id)=>{
-        const validate = true
-        let confirm = true
-        for(let i=0; i<validate.user['favorites'].length; i++){
-            if(validate.user['favorites'][i]['_id'] == _id){
-                confirm = false
-                break
-            }
-            confirm = true 
-        }
-        if(validate['auth'] && confirm==true){
-            await addFav(name, _id, validate.user['_id'])
-        }
+        await addFav(currentUser.uid, _id, name)
     }
     const clear = () => {
         setData('')
@@ -122,7 +114,7 @@ export default function Ativos(){
             {data ? data.slice(0 + (page*8) ,8 + (page*8)).map((value, key)=>{ return(
                 <div className={styles.tableContainer} style={open==key ? {minHeight: '100px'} : {minHeight: '50px'}}> 
                     <div className={open==key ? styles.listHeaderTurn : styles.listHeader}>
-                        <FaStar className={open==key ? styles.listStar : styles.listStarTurn} onClick={()=> addFavs(value.data.nome, value['_id'])}/>
+                        <FaStar className={open==key ? styles.listStar : styles.listStarTurn} onClick={()=> addFavs(value.data.nome, value.id)}/>
                         {open == key && (<BsQuestionCircle className={styles.question}/>)}
                         <a className={styles.listName} style={open==key ? {left: '80px'} : {}}>{value.data.nome}</a>
                         <div onClick={()=>{handelClick(key)}} className={styles.listArrow} >

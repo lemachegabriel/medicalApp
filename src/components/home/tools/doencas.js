@@ -6,6 +6,7 @@ import {BsQuestionCircle} from 'react-icons/bs'
 import DoencasSugest from "./doencasSugest"
 import {AiOutlineDoubleRight} from 'react-icons/ai'
 import { useDoencas } from "../../../contexts/problemsContext"
+import { useAtivos } from "../../../contexts/ativosContext"
 
 export default function Doencas(){
     const [wordEntered, setWordEntered] = useState('')
@@ -14,8 +15,10 @@ export default function Doencas(){
     const [all, setAll] = useState(false)
     const [open, setOpen] = useState()
     const [page, setPage] = useState(0)
-    const {queryDoc, getAll} = useDoencas()
-
+    const [uid, setUid] = useState('')
+    const {getAll} = useDoencas()
+    const {getAtivo} = useAtivos()
+    
     useEffect(()=>{
         const op = localStorage.getItem('searchCategoria')
         const da = localStorage.getItem('dataCategoria')
@@ -36,18 +39,27 @@ export default function Doencas(){
     const handleSubmit = async (e) => {
         e.preventDefault()
         if(wordEntered){
+            const DATA = await getAll()
             const Array = []
-            const DATA = await queryDoc(wordEntered)
             DATA.forEach(element => {
-                // console.log(element.id, )
-                const ativos = element.data().ativos
-                console.log(ativos)
-                Array.push({id: element.id, data : element.data()})
+                if(element.data().nome.toLowerCase().includes(wordEntered.toLowerCase())){
+                    Array.push({id: element.id, data : element.data()})
+                }
+            });
+            Array.sort((a, b) => {
+                let fa = a.data.nome.toLowerCase(), fb = b.data.nome.toLowerCase();
+                if (fa < fb) {
+                    return -1;
+                }
+                if (fa > fb) {
+                    return 1;
+                }
+                return 0;
             })
             setDataCategoria(Array)
             setAll(false)
             setPage(0)
-        }  
+        }
     }
     const handelClick = (key) => {
         if(key == open){
@@ -71,8 +83,15 @@ export default function Doencas(){
         }
     }
     const getMed = async (e)=> {
-        const DATA = await queryID(e.target.id)
-        setDataMed(DATA)
+        setUid(e.target.id) 
+        await getAtivo(e.target.id)
+        .then((res) => {
+            const DATA = res.data()
+            setDataMed(DATA)
+        }).catch((err) => {
+            console.log(err)
+        })
+        
     }
     const addFavs = async (name, _id)=>{
         const validate = await verify_cookie_auth()
@@ -144,12 +163,12 @@ export default function Doencas(){
                     <div className={styles.ativosDescription}>
                         <div className={styles.headDesciption}>
                             <BsQuestionCircle style={{color: "#8fcb3c"}}/>
-                            <a>{dataMed['name']}</a>
-                            <FaStar className={styles.listStar} onClick={()=>addFavs(dataMed['name'], dataMed['_id'])}/>
+                            <a>{dataMed['nome']}</a>
+                            <FaStar className={styles.listStar} onClick={()=>addFavs(dataMed['nome'], dataMed['_id'])}/>
                         </div>
                         <div className={styles.descriptionBox}>
                             <div className={styles.descriptionText}>
-                                <a>{dataMed['description']}</a>
+                                <a>{dataMed['descricao']}</a>
                             </div>
                         </div>
                     </div>

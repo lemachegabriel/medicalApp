@@ -1,4 +1,4 @@
-import { doc, setDoc, getDocs, collection, query, where, orderBy, startAt, endAt  } from "firebase/firestore";
+import { doc, getDocs, getDoc, collection, query, where, orderBy, startAt, endAt  } from "firebase/firestore";
 import React, { useContext, useState, useEffect } from "react"
 import { firestore } from "../lib/firebase"
 
@@ -21,9 +21,16 @@ export function AtivosProvider({ children}){
         return getDocs(query(docRef))
     }
 
+    function getAtivo(uid){
+        console.log( uid)
+        const docRef = doc(firestore, 'ativos', uid.trim())
+        return getDoc(docRef)
+    }
+
     const value = {
         queryMed,
-        getAll
+        getAll,
+        getAtivo
     }
 
     return (

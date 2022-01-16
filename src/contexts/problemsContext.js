@@ -23,7 +23,7 @@ export function DoencasProvider({ children}){
 
     const value = {
         queryDoc,
-        getAll
+        getAll,
     }
 
     return (

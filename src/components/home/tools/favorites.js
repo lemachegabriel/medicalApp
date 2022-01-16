@@ -3,12 +3,14 @@ import { FaStar } from 'react-icons/fa'
 import React, { useState, useEffect } from 'react'
 import {BsQuestionCircle} from 'react-icons/bs'
 import {MdPlayArrow } from 'react-icons/md'
+import { useAuth } from '../../../contexts/authContext'
 
 export default function Favoritos(){
     const [favs, setFavs] = useState([])
     const [open, setOpen] = useState()
     const [page, setPage] = useState(0)
     const [dataMed, setDataMed] = useState('')
+    const { currentUser, removeFav, addFav, getUser} = useAuth()
 
     const getFav = async () =>{
         const DATA = await verify_cookie_auth()
@@ -16,8 +18,8 @@ export default function Favoritos(){
           setFavs(DATA.user['favorites'])
         }
       }
-      useEffect(()=> {
-        getFav()
+    useEffect(()=> {
+        console.log(currentUser)
     }, [])
 
     const handelClick = async (key, medId) => {
