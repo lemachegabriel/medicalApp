@@ -15,9 +15,10 @@ import router from 'next/router';
 export default function SideBar() {
   const [selected, setSelected] = useState('ativos')
   const [favs, setFavs] = useState()
-  const {logout} = useAuth()
+  const {logout, getUser, currentUser, setCurrentUser} = useAuth()
 
   useEffect(()=>{
+    console.log(currentUser.uid)
     const op = localStorage.getItem('option')
     if(op) setSelected(op)
   },[])
@@ -54,7 +55,7 @@ export default function SideBar() {
           <RiSettings4Line/>
           <a>Ajustes</a>
         </div> */}
-        <div className={styles.item} onClick={()=>setSelected('favoritos')} style={{backgroundColor : selected=='favoritos' ? '#15181b' : '#23282d'}}>
+        <div className={styles.item} onClick={()=>{getUser(currentUser.uid); setSelected('favoritos')}} style={{backgroundColor : selected=='favoritos' ? '#15181b' : '#23282d'}}>
           <AiOutlineStar/>
           <a>Favoritos</a>
         </div>

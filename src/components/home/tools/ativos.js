@@ -15,6 +15,7 @@ export default function Ativos(){
     const [page, setPage] = useState(0)
     const {getAll} = useAtivos()
     const {addFav, currentUser} = useAuth()
+    const [favs, setFavs] = useState(currentUser.data.favoritos)
 
     useEffect(()=>{
         const op = localStorage.getItem('search')
@@ -66,7 +67,13 @@ export default function Ativos(){
                 }
                 return 0;
             })
-            console.log(Array)
+            for(let x=0; x<Array.length; x++){
+                for(let y=0; y<favs.length; y++){
+                    if(Array[x].id == favs[y].uid){
+                        Array[x].fav = true
+                    }
+                }
+            }
             setData(Array)
             setAll(false)
             setPage(0)
@@ -114,7 +121,7 @@ export default function Ativos(){
             {data ? data.slice(0 + (page*8) ,8 + (page*8)).map((value, key)=>{ return(
                 <div className={styles.tableContainer} style={open==key ? {minHeight: '100px'} : {minHeight: '50px'}}> 
                     <div className={open==key ? styles.listHeaderTurn : styles.listHeader}>
-                        <FaStar className={open==key ? styles.listStar : styles.listStarTurn} onClick={()=> addFavs(value.data.nome, value.id)}/>
+                        <FaStar className={open==key ? styles.listStar : styles.listStarTurn} onClick={()=> addFavs(value.data.nome, value.id)} style={value.fav==true ? {color: 'rgb(255, 204, 0)'}: {}}/>
                         {open == key && (<BsQuestionCircle className={styles.question}/>)}
                         <a className={styles.listName} style={open==key ? {left: '80px'} : {}}>{value.data.nome}</a>
                         <div onClick={()=>{handelClick(key)}} className={styles.listArrow} >

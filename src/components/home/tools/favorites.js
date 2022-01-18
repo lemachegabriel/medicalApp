@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import {BsQuestionCircle} from 'react-icons/bs'
 import {MdPlayArrow } from 'react-icons/md'
 import { useAuth } from '../../../contexts/authContext'
+import { useAtivos } from '../../../contexts/ativosContext'
 
 export default function Favoritos(){
     const [favs, setFavs] = useState([])
@@ -11,15 +12,11 @@ export default function Favoritos(){
     const [page, setPage] = useState(0)
     const [dataMed, setDataMed] = useState('')
     const { currentUser, removeFav, addFav, getUser} = useAuth()
+    const { getAtivo } = useAtivos()
 
-    const getFav = async () =>{
-        const DATA = await verify_cookie_auth()
-        if(DATA.auth){
-          setFavs(DATA.user['favorites'])
-        }
-      }
+
     useEffect(()=> {
-        console.log(currentUser)
+        setFavs(currentUser.data.favoritos)
     }, [])
 
     const handelClick = async (key, medId) => {
@@ -27,8 +24,8 @@ export default function Favoritos(){
             setOpen(null)
             setDataMed('')
         }else{
-            const DATA = await queryID(medId)
-            setDataMed(DATA)
+            const DATA = await getAtivo(medId)
+            setDataMed(DATA.data())
             setOpen(key)
         }
     }
@@ -48,14 +45,14 @@ export default function Favoritos(){
                     <div className={open==key ? styles.listHeaderTurn : styles.listHeader}>
                         <FaStar className={open==key ? styles.listStar : styles.listStarTurn}/>
                         {open == key && (<BsQuestionCircle className={styles.question}/>)}
-                        <a className={styles.listName} style={open==key ? {left: '80px'} : {}}>{value['name']}</a>
-                        <div onClick={()=>{handelClick(key, value['_id'])}} className={styles.listArrow} >
+                        <a className={styles.listName} style={open==key ? {left: '80px'} : {}}>{value['nome']}</a>
+                        <div onClick={()=>{handelClick(key, value['uid'])}} className={styles.listArrow} >
                             <MdPlayArrow className={open==key ? styles.arrowTurn : styles.arrow}/>
                         </div>
                     </div>
                     {open==key && (
                         <div className={styles.description}>
-                            <p>{dataMed['description']}</p>
+                            <p>{dataMed['descricao']}</p>
                         </div>
                     )}
                 </div>

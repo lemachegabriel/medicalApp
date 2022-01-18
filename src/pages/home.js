@@ -8,21 +8,14 @@ import {useAuth} from '../contexts/authContext'
 export default function UserInfo(){
     const [passed, setPassed] = useState(false) 
     const [User, setUser] = useState('')
-    const {getUser, currentUser} = useAuth()
-   
-    const validate = async () => {
-        await getUser(currentUser.uid)
-        .then((res)=>{
-            const name = res.data().nome
-            setUser(name.split(' ')[0]) 
-        })
-    }
+    const {currentUser} = useAuth()
     
     useEffect(()=> {
         if(!currentUser){
             router.push('/login')
         }else{
-            validate()
+            const name = currentUser.data.nome
+            setUser(name.split(' ')[0])
             setPassed(true)
         }
     })

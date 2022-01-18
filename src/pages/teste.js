@@ -23,6 +23,16 @@ export default function teste() {
         DATA.forEach(element => {
             Array.push({id: element.id, data : element.data()})
         })
+        Array.sort((a, b) => {
+            let fa = a.data.nome.toLowerCase(), fb = b.data.nome.toLowerCase();
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        })
         setData(Array)
     }
     

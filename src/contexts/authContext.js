@@ -38,9 +38,16 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
-  function getUser(uid){
+  async function getUser(uid){
     const docRef = doc(firestore, 'usuarios', uid)
-    return getDoc(docRef)
+    await getDoc(docRef)
+    .then((res) => {
+      setCurrentUser({
+        uid: currentUser.uid,
+        email: currentUser.email,
+        data: res.data()
+      })
+    })
   }
 
   function createUser(uid, nome, tel, pro){
@@ -74,8 +81,15 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       if(user){
-        setCurrentUser(user)
-        setLoading(false)
+        getDoc(doc(firestore, 'usuarios', user.uid))
+        .then((res) => {
+          setCurrentUser({
+            uid: user.uid,
+            email: user.email,
+            data: res.data()
+          })
+          setLoading(false)
+        })
       }else{
         setCurrentUser(false)
         setLoading(false)
@@ -87,6 +101,7 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
+    setCurrentUser,
     login,
     singup,
     logout,
