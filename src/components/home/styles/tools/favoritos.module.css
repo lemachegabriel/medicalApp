@@ -30,6 +30,40 @@
     
 }
 /* ///////////////////////////////////////////////////// FAVORITES ///////////////////////////////////////////////// */
+.filters{
+    width: 70%;
+    height: 25px;
+    top: 135px;
+    position: relative;
+    left: 19%;
+    flex-flow: row wrap;    
+}
+
+.edit{
+    background-color: #fbfbfb;;
+    position: relative;
+    border: 0.12rem solid #dadce0;
+    border-radius: 30px;
+    color: #858786;
+    padding-top: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    transition-duration: 200ms;
+    padding-bottom: 2px;
+    padding: 6px;
+    padding-left: 15px;
+    margin-right: 5px;
+}
+.edit svg{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.edit:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    box-shadow: rgba(68, 68, 68, 0.24) 0 3px 8px 0;
+} 
 
 .tableContainer{
     position: relative;
